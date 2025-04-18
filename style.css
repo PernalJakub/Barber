@@ -239,7 +239,7 @@
   
     @media (max-width: 599px) {
       body {
-        padding-top: 20px;
+        padding-top: 28px;
       }
     }
     
@@ -302,6 +302,8 @@
     .navbar-section .navbar-company {
       font-size: var(--title-large);
       margin-left: var(--space-sm);
+      font-weight: 600;
+
     }
     .navbar-section .navbar-center {
       display: flex;
