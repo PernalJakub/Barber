@@ -275,11 +275,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
-      padding: 10px 0 0 0;
+      height: 65px;
       position: fixed;
+      background-color: #e8e8e8ca;
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      /* -webkit-backdrop-filter: blur(10px); */
       top: 0;
       left: 0;
       right: 0;
@@ -441,12 +441,12 @@
 
     @media (max-width: 991px) {
       .navbar-section .mobile-nav-overlay {
-        top: 55px;
+        top: 60px;
       }
     }
     @media (max-width: 599px) {
       .navbar-section .mobile-nav-overlay {
-        top: 50px;
+        top: 55px;
       }
     }
 
@@ -490,7 +490,7 @@
 
     @media (max-width: 991px) {
       .navbar-section .navbar-container {
-        height: 55px;
+        height: 60px;
       }
       .navbar-section .navbar-center,
       .navbar-section .navbar-right {
@@ -502,7 +502,7 @@
     }
     @media (max-width: 599px) {
       .navbar-section .navbar-container {
-        height: 50px;
+        height: 55px;
       }
     }
 
