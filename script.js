@@ -27,10 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.querySelector(".navbar-container");
   setTimeout(() => {
     navbar.classList.remove("hide-navbar");
-    navbar.style.animation = "fadeInTop 1.2s ease-out";
-    setTimeout(() => {
-      navbar.style.animation = "";
-    }, 1200);
   }, 5400);
 
 
@@ -58,26 +54,27 @@ let lastScrollTop = 0;
 let hideTimeout;
 
 window.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar-container");
-  const currentScroll = window.scrollY;
+  const currentScroll = Math.round(window.scrollY);
+  const previousScrollTop = lastScrollTop;
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 
-  if (currentScroll > lastScrollTop && currentScroll > 60) {
+  const navbar = document.querySelector(".navbar-container");
+  console.log("ScrollY:", currentScroll, "LastScrollTop:", previousScrollTop);
+  console.log("Navbar has hide-navbar:", navbar.classList.contains("hide-navbar"));
+
+  if ((currentScroll > previousScrollTop + 5) && currentScroll > 60) {
+    console.log("Scrolling down: HIDE NAVBAR");
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(() => {
       navbar.classList.add("hide-navbar");
     }, 400);
   } else {
+    console.log("Scrolling up: SHOW NAVBAR");
     clearTimeout(hideTimeout);
-      if (navbar.classList.contains("hide-navbar")) {
-        navbar.classList.remove("hide-navbar");
-        navbar.style.animation = "fadeInTop 0.4s ease-out";
-        setTimeout(() => {
-          navbar.style.animation = "";
-        }, 400);
-      }
+    if (navbar.classList.contains("hide-navbar")) {
+      navbar.classList.remove("hide-navbar");
+    }
   }
-
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
 });
 // JS navbar-section

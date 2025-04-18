@@ -285,9 +285,12 @@
       right: 0;
       width: 100%;
       z-index: 999;
-      transform: translateY(0);
-      transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
       will-change: transform, opacity;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
     }
 
     .navbar-section .navbar-left {
@@ -508,14 +511,10 @@
     body.no-scroll {
       overflow: hidden;
     }
-  
-    .navbar-section .navbar-container {
-      transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-      will-change: transform, opacity;
-    }
+
 
     .navbar-section .navbar-container.hide-navbar {
-      transform: translateY(-100%);
+      transform: translate3d(0, -100%, 0);
       opacity: 0;
     }
 
