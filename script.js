@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.querySelector(".navbar-container");
   setTimeout(() => {
     navbar.classList.remove("hide-navbar");
-  }, 5400);
+  }, 5200);
 
 
   const hamburger = document.querySelector(".hamburger-icon");
@@ -387,7 +387,7 @@ function initCardSection() {
     root.querySelectorAll('.fade-in-item').forEach(el => {
       el.style.animationPlayState = 'running';
     });
-  }, 5200);
+  }, 5400);
 
   root.querySelectorAll('.card-button').forEach(button => {
     button.addEventListener('click', (e) => {
