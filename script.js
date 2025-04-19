@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.querySelector(".navbar-container");
   setTimeout(() => {
     navbar.classList.remove("hide-navbar");
-  }, 5200);
+  }, 5500);
 
 
   const hamburger = document.querySelector(".hamburger-icon");
