@@ -1,4 +1,3 @@
-
 // JS navbar-section
 function initNavbarSection() {
   const root = document.querySelector(".navbar-section");
@@ -74,6 +73,25 @@ window.addEventListener("scroll", () => {
     if (navbar.classList.contains("hide-navbar")) {
       navbar.classList.remove("hide-navbar");
     }
+  }
+});
+
+// Touch-based scroll hiding
+let touchStartY = 0;
+
+window.addEventListener("touchstart", (e) => {
+  touchStartY = e.touches[0].clientY;
+});
+
+window.addEventListener("touchmove", (e) => {
+  const touchEndY = e.touches[0].clientY;
+  const diff = touchStartY - touchEndY;
+  const navbar = document.querySelector(".navbar-container");
+
+  if (diff > 10) {
+    navbar.classList.add("hide-navbar"); // scrolling down
+  } else if (diff < -10) {
+    navbar.classList.remove("hide-navbar"); // scrolling up
   }
 });
 });
