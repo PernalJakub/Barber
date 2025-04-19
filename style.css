@@ -1381,6 +1381,12 @@ animation-play-state: paused;
     transition: opacity 1s ease-out, transform 1s ease-out;
   }
 
+  @media (max-width: 599px) {
+    .metamorphosis-title {
+      font-size: var(--display-small-m);
+    }
+  }
+
   .metamorphosis-title.animate-in {
     opacity: 1;
     transform: translateY(0);
