@@ -102,7 +102,13 @@ window.addEventListener("touchmove", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   initSliderSection();
   initCardSection();
-
+  
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+  document.body.style.overflow = 'hidden';
+  
   const intro = document.querySelector("#intro-animation");
   if (intro) {
     setTimeout(() => {
@@ -110,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       intro.style.pointerEvents = "none";
       intro.style.zIndex = "-1";
       document.body.classList.add("fade-in-ready");
+      document.body.style.overflow = '';
     }, 5000);
   }
 });
@@ -448,7 +455,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
-        title.classList.add("animate-in");
+        setTimeout(() => {
+          title.classList.add("animate-in");
+        }, 100);
         observer.unobserve(title);
       }
     },
