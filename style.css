@@ -248,6 +248,10 @@
     padding: 0;
   }
 
+  .gold {
+    color: var(--primary-base);
+  }
+
     /* CSS navbar-section */
     @keyframes fadeInTop {
       from {
@@ -1344,3 +1348,42 @@ animation-play-state: paused;
   }
   
   /* CSS card-section */
+
+  /* CSS inclusion-section */
+
+  .metamorphosis-section {
+    max-width: 1187px;
+    height: 330px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+  }
+  
+  @media (max-width: 991px) {
+    .metamorphosis-section {
+      height: 260px;
+    } 
+  }
+
+  @media (max-width: 599px) {
+    .metamorphosis-section{
+      height: 200px;
+    }
+  }
+
+  .metamorphosis-title {
+    font-size: var(--display-medium);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  .metamorphosis-title.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* CSS inclusion-section */

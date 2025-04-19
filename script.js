@@ -440,3 +440,23 @@ function initCardSection() {
     });
   });
 }
+
+// JS inclusion-section
+
+document.addEventListener("DOMContentLoaded", () => {
+  const title = document.querySelector(".metamorphosis-title");
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        title.classList.add("animate-in");
+        observer.unobserve(title);
+      }
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+  observer.observe(title);
+});
+
+// JS inclusion-section
