@@ -1393,3 +1393,219 @@ animation-play-state: paused;
   }
 
   /* CSS inclusion-section */
+
+  /* CSS animation-section-1 */
+    
+  .animated-section-1 {
+    width: 100%;
+    height: 700px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .animated-section-1 .animated-container {
+    width: 140vw;
+    max-width: none;
+    margin-left: -20vw;
+    margin-right: -20vw;
+    height: 654px;
+    background-color: var(--neutral-black);
+    transform: rotate(-1deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -6px 9px rgba(0, 0, 0, 0.25), 0 6px 9px rgba(0, 0, 0, 0.25);
+  }
+
+  .animated-section-1 .rotated-wrapper {
+    transform: rotate(1deg);
+    display: flex;
+    gap: 40px;
+  }
+
+  .animated-section-1 .service-card {
+    width: 320px;
+    height: 474px;
+    background-color: rgba(255, 255, 255, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px;
+    transition: all 0.3s ease-in-out;
+    transition: background-color 0.4s ease, border 0.4s ease, transform 0.4s ease;
+    border-radius: 6px;
+    border: 1px solid black;
+  }
+
+  .animated-section-1 .service-title {
+    font-size: var(--display-medium);
+    color: var(--neutral-light);
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .animated-section-1 .service-line {
+    width: 260px;
+    height: 1px;
+    border-radius: 2px;
+    background-color: var(--neutral-light);
+    margin: 16px 0;
+  }
+
+  .animated-section-1 .service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .animated-section-1 .service-list li {
+    font-size: var(--headline-medium);
+    color: var(--neutral-light);
+    margin: 6px 0;
+    font-weight: 300;
+  }
+
+  .animated-section-1 .service-card.active {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--primary-base);
+    transform: scale(1.05);
+  }
+
+  .animated-section-1 .service-card.active .service-title {
+    color: var(--primary-base);
+  }
+
+  .animated-section-1 .service-card.active .service-line {
+    background-color: var(--primary-base);
+  }
+
+  .animated-section-1 .service-card.active .service-list li {
+    color: var(--neutral-white);
+  }
+
+  @media (max-width: 991px) {
+    .animated-section-1 {
+      height: 520px;
+    }
+
+    .animated-section-1 .animated-container {
+      height: 420px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    .animated-section-1 {
+      height: 450px;
+    }
+
+    .animated-section-1 .animated-container {
+      height: 400px;
+    }
+
+    .animated-section-1 .service-title {
+      font-size: var(--headline-large-m);
+    }
+
+    .animated-section-1 .service-list li {
+      font-size: var(--headline-small);
+    }
+  }
+
+  @keyframes fadeInUpAS1 {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animated-section-1 .service-card {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUpAS1 1.2s ease-out forwards;
+  }
+
+
+  .animated-section-1 .service-card.delay-1 {
+    animation-delay: 0.2s;
+  }
+
+  .animated-section-1 .service-card.delay-2 {
+    animation-delay: 0.4s;
+  }
+
+  .animated-section-1 .service-card.delay-3 {
+    animation-delay: 0.6s;
+  }
+
+  /* Tylko na desktopie */
+@media (min-width: 992px) {
+.mobile-card-switcher {
+  display: none;
+}
+}
+
+/* Tylko na mobile/tablet */
+@media (max-width: 991px) {
+.animated-section-1 .rotated-wrapper {
+  display: none;
+}
+
+.animated-section-1 .mobile-card-switcher-ghost {
+  transform: rotate(1deg);
+}
+
+.animated-section-1 .mobile-card-switcher {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transform: translateY(15px);
+  opacity: 0;
+  animation: fadeInUpAS1 1.2s ease-out forwards;
+}
+
+.animated-section-1 .mobile-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.animated-section-1 .mobile-tabs .service-line {
+  margin: 8px;
+}
+
+.animated-section-1 .tab-btn {
+  background: none;
+  border: none;
+  color: var(--neutral-light);
+  font-size: var(--headline-large);
+  font-family: var(--font-rest);
+  cursor: pointer;
+  padding: 8px;
+
+}
+
+.animated-section-1 .tab-btn.active {
+  color: var(--primary-base);
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(206, 179, 124, 0.6);
+}
+
+.animated-section-1 .mobile-card {
+  display: none;
+}
+
+.animated-section-1 .mobile-card.active {
+  display: block;
+  text-align: center;
+}
+}
+
+/* css animated-section-1 */

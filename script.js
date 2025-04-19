@@ -469,3 +469,65 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // JS inclusion-section
+
+ // JS animation-section-1
+
+ document.addEventListener("DOMContentLoaded", () => {
+  const section = document.querySelector(".animated-section-1");
+  if (!section) return;
+
+  const cards = section.querySelectorAll(".service-card");
+  let activeIndex = 0;
+
+  setInterval(() => {
+    cards.forEach(card => card.classList.remove("active"));
+    cards[activeIndex].classList.add("active");
+    activeIndex = (activeIndex + 1) % cards.length;
+  }, 3500);
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        cards.forEach(card => {
+          card.style.animationPlayState = "running";
+        });
+        observer.unobserve(section);
+      }
+    },
+    { threshold: 0.2 }
+  );
+
+  observer.observe(section);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+const mobileTabs = document.querySelectorAll(".mobile-card-switcher .tab-btn");
+const mobileCards = document.querySelectorAll(".mobile-card-switcher .mobile-card");
+
+let activeMobile = 0;
+
+const setMobileActive = (index) => {
+  mobileTabs.forEach((tab, i) => {
+    tab.classList.toggle("active", i === index);
+  });
+  mobileCards.forEach((card, i) => {
+    card.classList.toggle("active", i === index);
+  });
+};
+
+setMobileActive(activeMobile);
+
+setInterval(() => {
+  activeMobile = (activeMobile + 1) % mobileCards.length;
+  setMobileActive(activeMobile);
+}, 3500);
+
+mobileTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    activeMobile = parseInt(tab.dataset.index);
+    setMobileActive(activeMobile);
+  });
+});
+});
+
+// JS animated-section-1
