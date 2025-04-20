@@ -473,10 +473,11 @@ document.addEventListener("DOMContentLoaded", () => {
  // JS animation-section-1
 
  document.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector(".animated-section-1");
-  if (!section) return;
+  const animatedSection1 = document.querySelector(".animated-section-1");
+  if (!animatedSection1) return;
 
-  const cards = section.querySelectorAll(".service-card");
+  const cards = animatedSection1.querySelectorAll(".service-card");
+  const cardsGhost = animatedSection1.querySelectorAll(".service-card-ghost");
   let activeIndex = 0;
 
   setInterval(() => {
@@ -485,19 +486,19 @@ document.addEventListener("DOMContentLoaded", () => {
     activeIndex = (activeIndex + 1) % cards.length;
   }, 3500);
 
-  const observer = new IntersectionObserver(
+  const observer2 = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
-        cards.forEach(card => {
-          card.style.animationPlayState = "running";
-        });
-        observer.unobserve(section);
+        setTimeout(() => {
+          cardsGhost.forEach(card => card.classList.add("fade-in-item-as1"));
+        }, 100);
+        observer2.unobserve(animatedSection1);
       }
     },
     { threshold: 0.2 }
   );
 
-  observer.observe(section);
+  observer2.observe(animatedSection1);
 });
 
 document.addEventListener("DOMContentLoaded", () => {

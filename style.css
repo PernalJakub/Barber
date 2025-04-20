@@ -252,6 +252,20 @@
     color: var(--primary-base);
   }
 
+  html {
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  body {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+
     /* CSS navbar-section */
     @keyframes fadeInTop {
       from {
@@ -1432,11 +1446,19 @@ animation-play-state: paused;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: top;
     padding: 32px 16px;
     transition: all 0.3s ease-in-out;
     transition: background-color 0.4s ease, border 0.4s ease, transform 0.4s ease;
     border-radius: 6px;
     border: 1px solid black;
+  }
+
+  .service-card-ghost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .animated-section-1 .service-title {
@@ -1476,6 +1498,7 @@ animation-play-state: paused;
 
   .animated-section-1 .service-card.active .service-title {
     color: var(--primary-base);
+    text-shadow: 0 0 12px rgba(206, 179, 124, 0.6);
   }
 
   .animated-section-1 .service-card.active .service-line {
@@ -1510,7 +1533,7 @@ animation-play-state: paused;
     }
 
     .animated-section-1 .service-list li {
-      font-size: var(--headline-small);
+      font-size: 22px;
     }
   }
 
@@ -1525,22 +1548,22 @@ animation-play-state: paused;
     }
   }
 
-  .animated-section-1 .service-card {
+  .animated-section-1 .fade-in-item-as1{
     opacity: 0;
     transform: translateY(15px);
     animation: fadeInUpAS1 1.2s ease-out forwards;
   }
 
 
-  .animated-section-1 .service-card.delay-1 {
+  .animated-section-1 .delay-1 {
     animation-delay: 0.2s;
   }
 
-  .animated-section-1 .service-card.delay-2 {
+  .animated-section-1 .delay-2 {
     animation-delay: 0.4s;
   }
 
-  .animated-section-1 .service-card.delay-3 {
+  .animated-section-1 .delay-3 {
     animation-delay: 0.6s;
   }
 
@@ -1559,43 +1582,21 @@ animation-play-state: paused;
 
 .animated-section-1 .mobile-card-switcher-ghost {
   transform: rotate(1deg);
+  height: 327px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 10px;
 }
 
 .animated-section-1 .mobile-card-switcher {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   transform: translateY(15px);
   opacity: 0;
   animation: fadeInUpAS1 1.2s ease-out forwards;
-}
-
-.animated-section-1 .mobile-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.animated-section-1 .mobile-tabs .service-line {
-  margin: 8px;
-}
-
-.animated-section-1 .tab-btn {
-  background: none;
-  border: none;
-  color: var(--neutral-light);
-  font-size: var(--headline-large);
-  font-family: var(--font-rest);
-  cursor: pointer;
-  padding: 8px;
-
-}
-
-.animated-section-1 .tab-btn.active {
-  color: var(--primary-base);
-  font-weight: 500;
-  text-shadow: 0 0 12px rgba(206, 179, 124, 0.6);
 }
 
 .animated-section-1 .mobile-card {
@@ -1603,8 +1604,61 @@ animation-play-state: paused;
 }
 
 .animated-section-1 .mobile-card.active {
-  display: block;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  transition: background-color 0.4s ease, border 0.4s ease, transform 0.4s ease;
+  color: var(--neutral-white);
+}
+
+.animated-section-1 .mobile-tabs {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding-right: 18px;
+}
+
+.animated-section-1 .tab-btn {
+  background: none;
+  border: none;
+  color: var(--neutral-light);
+  font-size: var(--display-small);
+  font-family: var(--font-rest);
+  cursor: pointer;
+  padding: 0 8px;
+  transition: all 0.3s ease-in-out;
+  transition: background-color 0.4s ease, border 0.4s ease, transform 0.4s ease;
+}
+
+.animated-section-1 .tab-btn.active {
+  color: var(--primary-base);
+  font-weight: 500;
+  text-shadow: 0 0 12px rgba(206, 179, 124, 0.6);
+  transform: scale(1.05);
+}
+
+@keyframes fadeInUpAS1Li {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-li-as1 {
+  opacity: 0;
+  animation: fadeInUpAS1Li 0.8s ease-out forwards;
+}
+
+.animated-section-1 .mobile-card.active .service-list li {
+  transition: all 0.3s ease-in-out;
+  transition: background-color 0.4s ease, border 0.4s ease, transform 0.4s ease;
+  color: var(--neutral-white);
 }
 }
 
