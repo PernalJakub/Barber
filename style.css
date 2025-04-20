@@ -1451,7 +1451,6 @@ animation-play-state: paused;
   .animated-section-1 .service-card {
     width: 320px;
     height: 474px;
-    background-color: rgba(255, 255, 255, 0.04);
     display: flex;
     flex-direction: column;
     align-items: center;
