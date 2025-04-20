@@ -518,13 +518,14 @@ const setMobileActive = (index) => {
 
 setMobileActive(activeMobile);
 
-setInterval(() => {
+let autoSwitchInterval = setInterval(() => {
   activeMobile = (activeMobile + 1) % mobileCards.length;
   setMobileActive(activeMobile);
 }, 3500);
 
 mobileTabs.forEach(tab => {
   tab.addEventListener("click", () => {
+    clearInterval(autoSwitchInterval);
     activeMobile = parseInt(tab.dataset.index);
     setMobileActive(activeMobile);
   });
