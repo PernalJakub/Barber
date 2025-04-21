@@ -1676,3 +1676,107 @@ animation-play-state: paused;
 }
 
 /* css animated-section-1 */
+
+/* CSS animation-section-2 */
+    
+.animated-section-2 {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 367px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-section-2 .animated-container {
+  width: 120vw;
+  max-width: none;
+  margin-left: -20vw;
+  margin-right: -20vw;
+  height: 250px;
+  background-color: var(--neutral-black);
+  transform: rotate(-1deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -6px 9px rgba(0, 0, 0, 0.25), 0 6px 9px rgba(0, 0, 0, 0.25);
+}
+
+.animated-section-2 .rotated-wrapper-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.animated-section-2 .rotated-wrapper {
+  display: flex;
+  gap: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+  justify-content: flex-start;
+  align-items: center;
+  width: max-content;
+  animation: scrollLeft 18s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animated-section-2 .rotated-wrapper .icon-svg {
+  width: 125px;
+  height: 125px;
+  flex-shrink: 0;
+  fill: var(--primary-base);
+}
+
+@media (max-width: 991px) {
+  .animated-section-2 {
+    height: 264.5px;
+  }
+
+  .animated-section-2 .animated-container {
+    height: 187.5px;
+  }
+
+  .animated-section-2 .rotated-wrapper {
+    gap: 53px;
+    padding-left: 26.5px;
+    padding-right: 26.5px;
+  }
+
+  .animated-section-2 .rotated-wrapper .icon-svg {
+    width: 95px;
+    height: 95px;
+  }
+}
+
+@media (max-width: 599px) {
+  .animated-section-2 {
+    height: 162px;
+  }
+
+  .animated-section-2 .animated-container {
+    height: 125px;
+  }
+
+  .animated-section-2 .rotated-wrapper {
+    gap: 25px;
+    padding-left: 12.5px;
+    padding-right: 12.5px;
+  }
+
+  .animated-section-2 .rotated-wrapper .icon-svg {
+    width: 63px;
+    height: 63px;
+  }
+}
+
+/* css animated-section-2 */

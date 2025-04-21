@@ -551,3 +551,45 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // JS animated-section-1
+
+// JS animation-section-2
+const sectionAS2 = document.querySelector('.animated-section-2');
+
+if (sectionAS2) {
+  for (let i = 1; i <= 9; i++) {
+    fetch(`./media/animation-section-2/svg/${i}.svg`)
+      .then(response => response.text())
+      .then(data => {
+        const container = sectionAS2.querySelector(`#svg-placeholder-${i}`);
+        if (container) {
+          container.innerHTML = data;
+          const svg = container.querySelector('svg');
+          if (svg) {
+            svg.classList.add('icon-svg');
+            svg.setAttribute('fill', 'currentColor');
+          }
+        }
+      })
+      .catch(error => {
+        console.error(`Błąd ładowania SVG ${i}:`, error);
+      });
+  }
+
+  for (let i = 1; i <= 9; i++) {
+    const dupId = `svg-placeholder-${i}-dup`;
+    fetch(`./media/animation-section-2/svg/${i}.svg`)
+      .then(response => response.text())
+      .then(data => {
+        const container = sectionAS2.querySelector(`#${dupId}`);
+        if (container) {
+          container.innerHTML = data;
+          const svg = container.querySelector('svg');
+          if (svg) {
+            svg.classList.add('icon-svg');
+            svg.setAttribute('fill', 'currentColor');
+          }
+        }
+      });
+  }
+}
+// JS animation-section-2
