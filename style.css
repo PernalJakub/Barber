@@ -266,10 +266,6 @@
     background: transparent;
   }
 
-  .hidden {
-    display: none;
-  }
-
     /* CSS navbar-section */
     @keyframes fadeInTop {
       from {
@@ -1438,13 +1434,6 @@ animation-play-state: paused;
     justify-content: center;
     box-shadow: 0 -6px 9px rgba(0, 0, 0, 0.25), 0 6px 9px rgba(0, 0, 0, 0.25);
   }
-
-  /* @media (max-width: 911px) {
-    .animated-section-1 .animated-container {
-      margin-left: 0px;
-      margin-right: 0px;
-    }
-  } */
 
 .animated-section-1 .rotated-wrapper {
     transform: rotate(1deg);

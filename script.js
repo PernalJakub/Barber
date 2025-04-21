@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // JS inclusion-section
 
- // JS animation-section-1
+// JS animation-section-1
 
  document.addEventListener("DOMContentLoaded", () => {
   const animatedSection1 = document.querySelector(".animated-section-1");
