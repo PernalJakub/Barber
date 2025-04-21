@@ -477,20 +477,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!animatedSection1) return;
 
   const cards = animatedSection1.querySelectorAll(".service-card");
+  cards[0].classList.add("active");
   const cardsGhost = animatedSection1.querySelectorAll(".service-card-ghost");
+  const rotatedWrapper = animatedSection1.querySelector(".rotated-wrapper")
   let activeIndex = 0;
 
-  setInterval(() => {
-    cards.forEach(card => card.classList.remove("active"));
-    cards[activeIndex].classList.add("active");
-    activeIndex = (activeIndex + 1) % cards.length;
-  }, 3500);
 
   const observer2 = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
+        rotatedWrapper.classList.remove("hidden");
         setTimeout(() => {
           cardsGhost.forEach(card => card.classList.add("fade-in-item-as1"));
+          setInterval(() => {
+            cards.forEach(card => card.classList.remove("active"));
+            cards[activeIndex].classList.add("active");
+            activeIndex = (activeIndex + 1) % cards.length;
+          }, 3500);
         }, 100);
         observer2.unobserve(animatedSection1);
       }
@@ -502,34 +505,49 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-const mobileTabs = document.querySelectorAll(".mobile-card-switcher .tab-btn");
-const mobileCards = document.querySelectorAll(".mobile-card-switcher .mobile-card");
+  const animatedSection1 = document.querySelector(".animated-section-1");
+  const mobileSwitcher = document.querySelector(".mobile-card-switcher");
+  const mobileTabs = document.querySelectorAll(".mobile-card-switcher .tab-btn");
+  const mobileCards = document.querySelectorAll(".mobile-card-switcher .mobile-card");
 
-let activeMobile = 0;
+  let activeMobile = 0;
+  let autoSwitchInterval;
 
-const setMobileActive = (index) => {
-  mobileTabs.forEach((tab, i) => {
-    tab.classList.toggle("active", i === index);
+  const setMobileActive = (index) => {
+    mobileTabs.forEach((tab, i) => {
+      tab.classList.toggle("active", i === index);
+    });
+    mobileCards.forEach((card, i) => {
+      card.classList.toggle("active", i === index);
+    });
+  };
+
+  mobileTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      clearInterval(autoSwitchInterval);
+      activeMobile = parseInt(tab.dataset.index);
+      setMobileActive(activeMobile);
+    });
   });
-  mobileCards.forEach((card, i) => {
-    card.classList.toggle("active", i === index);
-  });
-};
 
-setMobileActive(activeMobile);
+  const observer3 = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        mobileSwitcher.classList.remove("hidden");
+        setTimeout(() => {
+          setMobileActive(activeMobile);
+          autoSwitchInterval = setInterval(() => {
+            activeMobile = (activeMobile + 1) % mobileCards.length;
+            setMobileActive(activeMobile);
+          }, 3500);
+        }, 100);
+        observer3.unobserve(animatedSection1);
+      }
+    },
+    { threshold: 0.2 }
+  );
 
-let autoSwitchInterval = setInterval(() => {
-  activeMobile = (activeMobile + 1) % mobileCards.length;
-  setMobileActive(activeMobile);
-}, 3500);
-
-mobileTabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    clearInterval(autoSwitchInterval);
-    activeMobile = parseInt(tab.dataset.index);
-    setMobileActive(activeMobile);
-  });
-});
+  observer3.observe(animatedSection1);
 });
 
 // JS animated-section-1

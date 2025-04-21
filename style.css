@@ -266,6 +266,10 @@
     background: transparent;
   }
 
+  .hidden {
+    display: none;
+  }
+
     /* CSS navbar-section */
     @keyframes fadeInTop {
       from {
@@ -1442,11 +1446,17 @@ animation-play-state: paused;
     }
   } */
 
-  .animated-section-1 .rotated-wrapper {
+.animated-section-1 .rotated-wrapper {
     transform: rotate(1deg);
     display: flex;
     gap: 40px;
-  }
+    transition: opacity 0.6s ease;
+}
+
+.animated-section-1 .rotated-wrapper.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
   .animated-section-1 .service-card {
     width: 320px;
@@ -1602,9 +1612,15 @@ animation-play-state: paused;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(15px);
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 0.8s ease-out, transform 1s ease-out;
+}
+
+.animated-section-1 .mobile-card-switcher.hidden {
   opacity: 0;
-  animation: fadeInUpAS1 1.2s ease-out forwards;
+  pointer-events: none;
+  transform: translateY(20px);
 }
 
 .animated-section-1 .mobile-card {
