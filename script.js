@@ -597,7 +597,7 @@ if (sectionAS2) {
 // JS inclusion-section
 
 document.addEventListener("DOMContentLoaded", () => {
-  const contentTitle = document.querySelectorAll(".content-for-animate");
+  const contentTitle = document.querySelector(".content-for-animate");
   const observer4 = new IntersectionObserver(
     ([entry]) => {
       if (entry.isIntersecting) {
