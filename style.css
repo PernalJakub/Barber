@@ -1793,14 +1793,15 @@ animation-play-state: paused;
 
 @media (max-width: 991px) {
   .content-section-1 {
-    margin-top: 0px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 599px) {
   .content-section-1 {
-    margin-top: 5px;
+    margin-top: 40px;
+    margin-bottom: 50px;
   }
 }
 
@@ -1819,13 +1820,16 @@ animation-play-state: paused;
 
 @media (max-width: 991px) {
   .content-section-1 .card {
-    height: 550px;
+    height: 594px;
+    max-width: 700px;
+    border: 0px;
   }
 }
 
 @media (max-width: 599px) {
   .content-section-1 .card {
-    height: 450px;
+    height: 508px;
+    border: 0px;
   }
 }
 
@@ -1892,6 +1896,7 @@ animation-play-state: paused;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     background-color: rgba(48, 54, 53, 0.2);
+    border: 1.5px solid var(--primary-base);
   }
 }
 
