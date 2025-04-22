@@ -593,3 +593,25 @@ if (sectionAS2) {
   }
 }
 // JS animation-section-2
+
+// JS inclusion-section
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contentTitle = document.querySelectorAll(".content-for-animate");
+  const observer4 = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          contentTitle.classList.add("content-animate-in");
+        }, 100);
+        observer4.unobserve(contentTitle);
+      }
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+  observer4.observe(contentTitle);
+});
+
+// JS inclusion-section
