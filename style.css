@@ -2252,3 +2252,58 @@ animation-play-state: paused;
 }
 
 /* CSS card-section-2 */
+
+ /* CSS footer-section */
+  
+ .footer-section {
+  background-color: var(--neutral-black);
+  width: 100%;
+  height: 574px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 -6px 9px rgba(0, 0, 0, 0.25);
+  margin: var(--space-5xl) 0 0 0;
+}
+
+.footer-wrapper {
+  max-width: 1147px;
+  margin: 0 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: var(--space-2xl) 0;
+  color: white;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--title-large);
+  padding: var(--space-5xl) 0;
+}
+
+.footer-links p,
+.footer-address p {
+  margin-bottom: var(--space-sm);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--body-large);
+}
+
+.footer-note {
+  margin-right: var(--space-md);
+}
+
+.footer-icons span {
+  font-size: 1.5rem;
+  margin-left: var(--space-md);
+}
+
+/* CSS footer-section */
