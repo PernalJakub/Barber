@@ -2116,7 +2116,6 @@ animation-play-state: paused;
 .card-section-2 .card-inner {
   width: var(--inner-card-width);
   height: var(--inner-card-height);
-  color: var(--primary-base);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   background-color: rgba(48, 54, 53, 0.2);
@@ -2201,12 +2200,14 @@ animation-play-state: paused;
 .card-section-2 .card-title {
   font-size: var(--title-medium);
   font-family: var(--font-rest);
+  color: var(--primary-base);
   font-weight: 500;
 }
 
 .card-section-2 .card-subtitle {
   font-size: var(--title-small);
   font-family: var(--font-rest);
+  color: var(--primary-dark);
 }
 
 .card-section-2 .card-media {
@@ -2227,6 +2228,7 @@ animation-play-state: paused;
   font-size: var(--title-medium);
   line-height: var(--line-height-title-medium);
   font-family: var(--font-rest);
+  color: var(--primary-dark);
 }
 
 @media (max-width: 991px) {
