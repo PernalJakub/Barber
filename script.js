@@ -686,12 +686,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   });
 
-  setTimeout(() => {
-    root.querySelectorAll('.fade-in-item').forEach(el => {
-      el.style.animationPlayState = 'running';
-    });
-  }, 200);
-
+  const fadeInItems = root.querySelectorAll('.fade-in-item');
+  const observer5 = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        fadeInItems.forEach(el => {
+          el.style.animationPlayState = 'running';
+        });
+        observer5.unobserve(entry.target);
+      }
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+  fadeInItems.forEach(item => {
+    observer5.observe(item);
+  });
 });
+
 
 // JS card-section

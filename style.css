@@ -224,7 +224,7 @@
 
   body {
     margin: 0;
-    background: var(--tertiary-base);
+    background: var(--tertiary-very-light);
     font-family: var(--font-rest);
     color: #333;
     overflow-x: hidden;
