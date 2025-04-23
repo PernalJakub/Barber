@@ -224,7 +224,7 @@
 
   body {
     margin: 0;
-    background: var(--tertiary-very-light);
+    background: var(--tertiary-base);
     font-family: var(--font-rest);
     color: #333;
     overflow-x: hidden;
@@ -1959,3 +1959,294 @@ animation-play-state: paused;
 }
 
 /* css content-section-2 */
+
+/* CSS card-section-2 */
+
+.card-section-2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.card-section-2 .card-container-label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  max-width: var(--container-max-width);
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.card-section-2 .container-label h3 {
+  font-size: var(--headline-medium);
+  line-height: var(--line-height-headline-medium);
+  margin-bottom: var(--space-sm);
+}
+
+@media (max-width: 991px) {
+  .card-section-2 .container-label h3 {
+    margin-bottom: var(--space-xs);
+  }
+}
+
+@media (max-width: 599px) {
+  .card-section-2 .container-label h3 {
+    margin-bottom: var(--space-2xs);
+  }
+}
+
+.card-section-2 .container-label p {
+  font-size: var(--body-large);
+  line-height: var(--line-height-body-large);
+  margin-bottom: var(--space-2xs);
+}
+
+@media (max-width: 991px) {
+  .card-section-2 .container-label p {
+    margin-bottom: var(--space-3xs);
+  }
+}
+
+@media (max-width: 599px) {
+  .card-section-2 .container-label p {
+    margin-bottom: var(--space-4xs);
+  }
+}
+
+.card-section-2 .container-arrows {
+  display: flex;
+  align-items: center;
+}
+
+.card-section-2 .cs-arrow {
+  width: 32px;
+  height: 26px;
+  font-size: 2rem;
+  color: var(--neutral-black);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 0;
+}
+
+@media (max-width: 991px) {
+  .card-section-2 .cs-arrow {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .card-section-2:hover .cs-arrow {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+}
+
+.card-section-2 .cs-arrow:hover {
+  color: white;
+}
+
+.card-section-2 .card-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  position: relative;
+  clip-path: inset(-100vw -100vw -100vw -100vw);
+  overflow: visible;
+  touch-action: pan-x;
+  padding-left: 12px;
+}
+
+.card-section-2 .card-track {
+  display: flex;
+  gap: var(--card-gap);
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 2;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  overflow-y: visible;
+  clip-path: inset(-100vw -100vw -100vw -100vw);
+}
+
+
+.card-section-2 .card {
+  width: var(--card-width);
+  height: 468px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--card-radius);
+  padding: 0.8rem;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+@media (max-width: 991px) {
+  
+  .card-section-2 .card {
+    height: 429px;
+  }
+}
+
+@media (max-width: 599px) {
+  
+  .card-section-2 .card {
+    height: 393.5px;
+  }
+}
+
+@media (min-width: 992px) {
+  
+  .card-section-2 .card-track {
+    overflow-x: visible;
+    scroll-snap-type: x mandatory;
+  }
+}
+
+.card-section-2 .card-inner {
+  width: var(--inner-card-width);
+  height: var(--inner-card-height);
+  color: var(--primary-base);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(48, 54, 53, 0.2);
+  border-radius: var(--card-radius);
+  border: 1.5px solid var(--primary-base);
+  flex-grow: 1;
+  box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.card-section-2 .card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5.2% 30px;
+  height: 17%;
+}
+
+
+@media (max-width: 991px) {
+  .card-section-2 .card-bottom {
+    padding: 5.2% 25px;
+  }
+}
+
+@media (max-width: 599px) {
+  .card-section-2 .card-bottom {
+    padding: 5.2% 20px;
+  }
+}
+
+.card-section-2 .card-track::-webkit-scrollbar {
+  display: none;
+}
+
+.card-section-2 .card-track {
+-ms-overflow-style: none; /* IE/Edge */
+scrollbar-width: none; /* Firefox */
+}
+
+@media (min-width: 992px) {
+.card-section-2 .card-track {
+scroll-snap-type: none;
+overflow-x: visible;
+transition: transform 0.5s ease;
+will-change: transform;
+}
+}
+
+@keyframes fadeSlideIn {
+from {
+opacity: 0;
+transform: translateY(-25px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.card-section-2 .fade-in-item {
+opacity: 0;
+animation: fadeSlideIn 1.2s ease forwards;
+animation-play-state: paused;
+}
+
+.card-section-2 .delay-0 { animation-delay: 0s; }
+.card-section-2 .delay-1 { animation-delay: 0.15s; }
+.card-section-2 .delay-2 { animation-delay: 0.30s; }
+.card-section-2 .delay-3 { animation-delay: 0.45s; }
+.card-section-2 .delay-4 { animation-delay: 0.60s; }
+.card-section-2 .delay-5 { animation-delay: 0.75s; }
+
+.card-section-2 .card-top {
+  height: 83%;
+}
+
+
+.card-section-2 .card-title {
+  font-size: var(--title-medium);
+  font-family: var(--font-rest);
+  font-weight: 500;
+}
+
+.card-section-2 .card-subtitle {
+  font-size: var(--title-small);
+  font-family: var(--font-rest);
+}
+
+.card-section-2 .card-media {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--card-radius);
+}
+
+.card-section-2 .card-media .comentery {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 45px 30px;
+  font-size: var(--title-medium);
+  line-height: var(--line-height-title-medium);
+  font-family: var(--font-rest);
+}
+
+@media (max-width: 991px) {
+  .card-section-2 .card-media .comentery {
+    padding: 45px 25px;
+  }
+}
+
+@media (max-width: 599px) {
+  .card-section-2 .card-media .comentery {
+    padding: 45px 20px;
+  }
+}
+
+
+.card-section-2 .card-media .line {
+  width: 80%;
+  height: 1.5px;
+  background-color: var(--primary-base);
+
+}
+
+/* CSS card-section-2 */

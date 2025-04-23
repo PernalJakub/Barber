@@ -615,3 +615,83 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // JS inclusion-section
+
+// JS card-section-2
+
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.querySelector(".card-section-2");
+  const track = root.querySelector(".card-track");
+  const leftArrow = root.querySelector(".cs-arrow.left");
+  const rightArrow = root.querySelector(".cs-arrow.right");
+  const cards = track.querySelectorAll(".card");
+  const container = root.querySelector(".card-container");
+  const maxIndex = cards.length - 3;
+  let currentIndex = 0;
+
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (isTouchDevice) {
+    root.querySelectorAll('.cs-arrow').forEach(arrow => {
+      arrow.style.display = 'none';
+    });
+    root.querySelectorAll('.card').forEach(card => {
+      card.classList.add('no-hover');
+    });
+  }
+
+  const getScrollAmount = () => {
+    const card = track.querySelector(".card");
+    const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+    return card.offsetWidth + gap;
+  };
+
+  const isDesktop = () => window.innerWidth >= 992;
+
+  const centerCard = (index) => {
+    const card = cards[index];
+    const offset = card.offsetLeft;
+    track.style.transform = `translateX(-${offset}px)`;
+  };
+
+  leftArrow.addEventListener("click", () => {
+    if (isDesktop()) {
+      if (currentIndex > 0) currentIndex--;
+      centerCard(currentIndex);
+    } else {
+      track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+    }
+  });
+
+  rightArrow.addEventListener("click", () => {
+    if (isDesktop()) {
+      if (currentIndex < maxIndex) currentIndex++;
+      centerCard(currentIndex);
+    } else {
+      track.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+    }
+  });
+
+  if (isDesktop()) {
+    centerCard(currentIndex);
+  }
+
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (isDesktop()) {
+        currentIndex = 0;
+        centerCard(currentIndex);
+      }
+    }, 300);
+  });
+
+  setTimeout(() => {
+    root.querySelectorAll('.fade-in-item').forEach(el => {
+      el.style.animationPlayState = 'running';
+    });
+  }, 200);
+
+});
+
+// JS card-section
