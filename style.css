@@ -2266,6 +2266,12 @@ animation-play-state: paused;
   margin: var(--space-5xl) 0 0 0;
 }
 
+@media (max-width: 991px) {
+  .footer-section {
+    height: 500px;
+  }
+}
+
 .footer-wrapper {
   max-width: 1147px;
   margin: 0 20px;
@@ -2304,6 +2310,24 @@ animation-play-state: paused;
 .footer-icons span {
   font-size: 1.5rem;
   margin-left: var(--space-md);
+}
+
+@media (max-width: 599px) {
+  .footer-section {
+    height: 420px;
+  }
+
+  .footer-wrapper {
+    padding: var(--space-xl) 0;
+  }
+
+  .footer-columns {
+    padding: var(--space-2xl) 0;
+  }
+
+  .footer-icons span {
+    margin-left: 6px;
+  }
 }
 
 /* CSS footer-section */
