@@ -594,7 +594,7 @@ if (sectionAS2) {
 }
 // JS animation-section-2
 
-// JS inclusion-section
+// JS content-section
 
 document.addEventListener("DOMContentLoaded", () => {
   const contentTitle = document.querySelector(".content-for-animate");
@@ -614,7 +614,7 @@ document.addEventListener("DOMContentLoaded", () => {
   observer4.observe(contentTitle);
 });
 
-// JS inclusion-section
+// JS content-section
 
 // JS card-section-2
 
@@ -707,3 +707,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // JS card-section
+
+// JS map-section
+document.addEventListener("DOMContentLoaded", () => {
+  const contentTitleMap = document.querySelector(".map-content-for-animate");
+  const observer8 = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          contentTitleMap.classList.add("content-animate-in");
+        }, 100);
+        observer8.unobserve(contentTitleMap);
+      }
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+  observer8.observe(contentTitleMap);
+});
+
+// Expand/Collapse map feature (updated)
+document.addEventListener("DOMContentLoaded", () => {
+  const expandBtn = document.querySelector('.map-button:first-child');
+  const mapLeft = document.querySelector('.two-col .left');
+  const mapRight = document.querySelector('.two-col .right');
+  const mapExpand = document.querySelector('.cardexpanded .card');
+  const collapseBtn = mapRight.querySelector('.collapse-button');
+  const mapContent = mapLeft.querySelector('.map-content-for-animate');
+
+  let expanded = false;
+
+  expandBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!expanded) {
+      const currentWidth = mapContent.offsetWidth + "px";
+      mapContent.style.minWidth = currentWidth;
+
+      mapLeft.classList.add("hidden");
+      mapLeft.style.width = "0";
+      mapRight.style.width = "100%";
+      mapExpand.classList.add("expanded");
+      collapseBtn.style.opacity = "1";
+      collapseBtn.style.pointerEvents = "auto";
+      expanded = true;
+    } else {
+      mapLeft.classList.remove("hidden");
+      requestAnimationFrame(() => {
+        mapLeft.style.width = "40%";
+        mapRight.style.width = "60%";
+      });
+      mapExpand.classList.remove("expanded");
+      collapseBtn.style.opacity = "0";
+      collapseBtn.style.pointerEvents = "none";
+      // Remove min-width so .map-content-for-animate adapts to parent again with delay
+      setTimeout(() => {
+        mapContent.style.removeProperty("min-width");
+      }, 1000);
+      expanded = false;
+    }
+  });
+
+  collapseBtn.addEventListener("click", () => {
+    mapLeft.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      mapLeft.style.width = "40%";
+      mapRight.style.width = "60%";
+    });
+    mapExpand.classList.remove("expanded");
+    collapseBtn.style.opacity = "0";
+    collapseBtn.style.pointerEvents = "none";
+    // Remove min-width so .map-content-for-animate adapts to parent again with delay
+    setTimeout(() => {
+      mapContent.style.removeProperty("min-width");
+    }, 1000);
+    expanded = false;
+  });
+});
+
+// JS map-section
