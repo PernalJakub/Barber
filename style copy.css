@@ -267,7 +267,7 @@
   }
 
     /* CSS navbar-section */
-    /* @keyframes fadeInTop {
+    @keyframes fadeInTop {
       from {
         opacity: 0;
         transform: translateY(-20px);
@@ -287,7 +287,7 @@
         opacity: 0;
         transform: translateY(-20px);
       }
-    } */
+    }
 
     .navbar-section .navbar-container {
       display: flex;
@@ -303,11 +303,12 @@
       right: 0;
       width: 100%;
       z-index: 999;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
       opacity: 1;
-      transition: transform 1s ease, opacity 1s ease;
+      transition: transform 1s ease-in-out, opacity 1.6s ease-in-out;
       will-change: transform, opacity;
       backface-visibility: hidden;
+      transform-style: preserve-3d;
     }
 
     .navbar-section .navbar-left {
@@ -529,10 +530,11 @@
       overflow: hidden;
     }
 
+
     .navbar-section .navbar-container.hide-navbar {
       transform: translateY(-100%);
       opacity: 0;
-      transition: transform 1s ease, opacity 1s ease;
+      transition: tranform 1s ease, opacity 1s ease;
     }
 
     .navbar-section .navbar-inner {
