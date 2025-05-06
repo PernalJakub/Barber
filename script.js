@@ -709,12 +709,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Expand/Collapse map feature (updated)
 document.addEventListener("DOMContentLoaded", () => {
-  const expandBtn = document.querySelector('.map-section .map-button:first-child');
+  const expandBtn = document.querySelector('.map-button:first-child');
   const mapLeft = document.querySelector('.map-section .two-col .left');
-  const mapRight = document.querySelector('.map-section .two-col .right');
-  const mapExpand = document.querySelector('.map-section .cardexpanded .card');
-  const collapseBtn = mapRight.querySelector('.map-section .collapse-button');
-  const mapContent = mapLeft.querySelector('.map-section .map-content-for-animate');
+  const mapRight = document.querySelector('.map-section  .two-col .right');
+  const mapExpand = document.querySelector('.cardexpanded .card');
+  const collapseBtn = mapRight.querySelector('.collapse-button');
+  const mapContent = mapLeft.querySelector('.map-content-for-animate');
 
   let expanded = false;
 
