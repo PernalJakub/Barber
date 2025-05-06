@@ -25,8 +25,9 @@ function initNavbarSection() {
 document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.querySelector(".navbar-container");
   setTimeout(() => {
+    navbar.classList.remove("start-show-navbar");
     navbar.classList.remove("hide-navbar");
-  }, 5500);
+  }, 5250);
 
 
   const hamburger = document.querySelector(".hamburger-icon");

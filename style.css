@@ -535,6 +535,12 @@
       transition: transform 1s ease, opacity 1s ease;
     }
 
+    .navbar-section .navbar-container.start-show-navbar {
+      transform: translateY(+10%);
+      opacity: 0;
+      transition: transform 1s ease, opacity 1.2s ease;
+    }
+
     .navbar-section .navbar-inner {
       display: flex;
       align-items: center;
