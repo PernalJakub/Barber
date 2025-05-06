@@ -711,7 +711,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const expandBtn = document.querySelector('.map-button:first-child');
   const mapLeft = document.querySelector('.map-section .two-col .left');
-  const mapRight = document.querySelector('.map-section  .two-col .right');
+  const mapRight = document.querySelector('.map-section .two-col .right');
   const mapExpand = document.querySelector('.cardexpanded .card');
   const collapseBtn = mapRight.querySelector('.collapse-button');
   const mapContent = mapLeft.querySelector('.map-content-for-animate');
@@ -765,4 +765,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Animacja dla .map-content-for-animate.mobile na mobile/tablet
+document.addEventListener("DOMContentLoaded", () => {
+  const contentTitleMapMobile = document.querySelector(".map-content-for-animate.mobile");
+  if (contentTitleMapMobile) {
+    const observer9 = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const elements = contentTitleMapMobile.querySelectorAll("h2, p, .map-buttons");
+          elements.forEach(el => {
+            el.classList.add("content-animate-in");
+          });
+          observer9.unobserve(contentTitleMapMobile);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer9.observe(contentTitleMapMobile);
+  }
+});
 // JS map-section
