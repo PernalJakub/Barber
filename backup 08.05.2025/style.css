@@ -267,7 +267,7 @@
   }
 
     /* CSS navbar-section */
-    @keyframes fadeInTop {
+    /* @keyframes fadeInTop {
       from {
         opacity: 0;
         transform: translateY(-20px);
@@ -287,7 +287,7 @@
         opacity: 0;
         transform: translateY(-20px);
       }
-    }
+    } */
 
     .navbar-section .navbar-container {
       display: flex;
@@ -303,12 +303,11 @@
       right: 0;
       width: 100%;
       z-index: 999;
-      transform: translate3d(0, 0, 0);
+      transform: translateY(0);
       opacity: 1;
-      transition: transform 1s ease-in-out, opacity 1.6s ease-in-out;
+      transition: transform 1s ease, opacity 1s ease;
       will-change: transform, opacity;
       backface-visibility: hidden;
-      transform-style: preserve-3d;
     }
 
     .navbar-section .navbar-left {
@@ -530,11 +529,16 @@
       overflow: hidden;
     }
 
-
     .navbar-section .navbar-container.hide-navbar {
       transform: translateY(-100%);
       opacity: 0;
-      transition: tranform 1s ease, opacity 1s ease;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .navbar-section .navbar-container.start-show-navbar {
+      transform: translateY(+10%);
+      opacity: 0;
+      transition: transform 1s ease, opacity 1.2s ease;
     }
 
     .navbar-section .navbar-inner {
@@ -1607,11 +1611,12 @@ animation-play-state: paused;
   transition: opacity 0.8s ease-out, transform 1s ease-out;
 }
 
-.animated-section-1 .mobile-card-switcher.hidden {
+/* Wylączona animacja wejscia dla wersji mobilnej */
+/* .animated-section-1 .mobile-card-switcher.hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px);
-}
+} */
 
 .animated-section-1 .mobile-card {
   display: none;
@@ -2507,7 +2512,23 @@ animation-play-state: paused;
         border: 1.5px solid var(--primary-base);
         border-radius: 6px;
       }
-    
+
+      /* Animacje wejścia dla .map-content-for-animate.mobile */
+      .map-section .two-col .right .map-content-for-animate.mobile h2,
+      .map-section .two-col .right .map-content-for-animate.mobile p,
+      .map-section .two-col .right .map-content-for-animate.mobile .map-buttons {
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .map-section .two-col .right .map-content-for-animate.mobile h2.content-animate-in,
+      .map-section .two-col .right .map-content-for-animate.mobile p.content-animate-in,
+      .map-section .two-col .right .map-content-for-animate.mobile .map-buttons.content-animate-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       .map-section .two-col .right .map-content-for-animate.mobile h2,
       .map-section .two-col .right .map-content-for-animate.mobile p {
         color: var(--neutral-white);
@@ -2533,6 +2554,7 @@ animation-play-state: paused;
       }
     }
     /* css map-section */
+  
 
  /* CSS footer-section */
   

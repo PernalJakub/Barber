@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     navbar.classList.remove("start-show-navbar");
     navbar.classList.remove("hide-navbar");
-  }, 5250);
+  }, 2850);
 
 
   const hamburger = document.querySelector(".hamburger-icon");
@@ -75,6 +75,10 @@ window.addEventListener("scroll", () => {
 });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbarSection();
+});
 // JS navbar-section
 
 // JS slider-section & card-section
@@ -97,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       intro.style.zIndex = "-1";
       document.body.classList.add("fade-in-ready");
       document.body.style.overflow = '';
-    }, 5000);
+    }, 2600);
   }
 });
 
@@ -261,7 +265,7 @@ function initSliderSection() {
         } else {
           enableTouchSwipe();
         }
-      }, 5000);
+      }, 2600);
     });
   });
 
@@ -392,7 +396,7 @@ function initCardSection() {
     root.querySelectorAll('.fade-in-item').forEach(el => {
       el.style.animationPlayState = 'running';
     });
-  }, 5400);
+  }, 3000);
 
   root.querySelectorAll('.card-button').forEach(button => {
     button.addEventListener('click', (e) => {

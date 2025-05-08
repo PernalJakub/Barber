@@ -25,8 +25,9 @@ function initNavbarSection() {
 document.addEventListener("DOMContentLoaded", () => {
   const navbar = document.querySelector(".navbar-container");
   setTimeout(() => {
+    navbar.classList.remove("start-show-navbar");
     navbar.classList.remove("hide-navbar");
-  }, 5500);
+  }, 5250);
 
 
   const hamburger = document.querySelector(".hamburger-icon");
@@ -49,51 +50,30 @@ hamburger.addEventListener("click", () => {
   }
 });
 
-let lastScrollTop = 0;
-let hideTimeout;
+let lastScrollTop = window.scrollY;
+let ticking = false;
+
+function handleNavbarVisibility() {
+  const currentScroll = window.scrollY;
+  const navbar = document.querySelector(".navbar-container");
+
+  if (currentScroll > lastScrollTop + 5 && currentScroll > 60) {
+    navbar.classList.add("hide-navbar");
+  } else if (currentScroll < lastScrollTop - 5) {
+    navbar.classList.remove("hide-navbar");
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  ticking = false;
+}
 
 window.addEventListener("scroll", () => {
-  const currentScroll = Math.round(window.scrollY);
-  const previousScrollTop = lastScrollTop;
-  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-
-  const navbar = document.querySelector(".navbar-container");
-  console.log("ScrollY:", currentScroll, "LastScrollTop:", previousScrollTop);
-  console.log("Navbar has hide-navbar:", navbar.classList.contains("hide-navbar"));
-
-  if ((currentScroll > previousScrollTop + 5) && currentScroll > 60) {
-    console.log("Scrolling down: HIDE NAVBAR");
-    clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(() => {
-      navbar.classList.add("hide-navbar");
-    }, 400);
-  } else {
-    console.log("Scrolling up: SHOW NAVBAR");
-    clearTimeout(hideTimeout);
-    if (navbar.classList.contains("hide-navbar")) {
-      navbar.classList.remove("hide-navbar");
-    }
+  if (!ticking) {
+    window.requestAnimationFrame(handleNavbarVisibility);
+    ticking = true;
   }
 });
 
-// Touch-based scroll hiding
-let touchStartY = 0;
-
-window.addEventListener("touchstart", (e) => {
-  touchStartY = e.touches[0].clientY;
-});
-
-window.addEventListener("touchmove", (e) => {
-  const touchEndY = e.touches[0].clientY;
-  const diff = touchStartY - touchEndY;
-  const navbar = document.querySelector(".navbar-container");
-
-  if (diff > 10) {
-    navbar.classList.add("hide-navbar"); // scrolling down
-  } else if (diff < -10) {
-    navbar.classList.remove("hide-navbar"); // scrolling up
-  }
-});
 });
 // JS navbar-section
 
@@ -729,12 +709,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Expand/Collapse map feature (updated)
 document.addEventListener("DOMContentLoaded", () => {
-  const expandBtn = document.querySelector('.map-section .map-button:first-child');
+  const expandBtn = document.querySelector('.map-button:first-child');
   const mapLeft = document.querySelector('.map-section .two-col .left');
   const mapRight = document.querySelector('.map-section .two-col .right');
-  const mapExpand = document.querySelector('.map-section .cardexpanded .card');
-  const collapseBtn = mapRight.querySelector('.map-section .collapse-button');
-  const mapContent = mapLeft.querySelector('.map-section .map-content-for-animate');
+  const mapExpand = document.querySelector('.cardexpanded .card');
+  const collapseBtn = mapRight.querySelector('.collapse-button');
+  const mapContent = mapLeft.querySelector('.map-content-for-animate');
 
   let expanded = false;
 
@@ -785,4 +765,23 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Animacja dla .map-content-for-animate.mobile na mobile/tablet
+document.addEventListener("DOMContentLoaded", () => {
+  const contentTitleMapMobile = document.querySelector(".map-content-for-animate.mobile");
+  if (contentTitleMapMobile) {
+    const observer9 = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const elements = contentTitleMapMobile.querySelectorAll("h2, p, .map-buttons");
+          elements.forEach(el => {
+            el.classList.add("content-animate-in");
+          });
+          observer9.unobserve(contentTitleMapMobile);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer9.observe(contentTitleMapMobile);
+  }
+});
 // JS map-section
