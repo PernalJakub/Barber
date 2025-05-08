@@ -349,7 +349,37 @@
       opacity: 1 !important;
     }
 
-    
+.navbar-section .navbar-center .highlighted,
+.navbar-section .mobile-nav-center .highlighted {
+      background-color: var(--tertiary-light) !important;
+      box-shadow: inset 0 0 12px var(--tertiary-very-light) !important;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+}
+
+.navbar-section .navbar-center .highlighted::after,
+.navbar-section .mobile-nav-center .highlighted::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; 
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
     .navbar-section .navbar-right {
       display: flex;
       align-items: center;
