@@ -274,6 +274,12 @@
     pointer-events: auto;
     cursor: pointer;
   }
+  @media (max-width: 991px) {
+    .global-icon-svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
   
   .global-icon-svg:hover {
     color: var(--primary-base);
