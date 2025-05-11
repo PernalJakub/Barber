@@ -1,3 +1,40 @@
+document.addEventListener("DOMContentLoaded", () => {
+  loadGlobalSVGIcons();
+});
+
+function loadGlobalSVGIcons() {
+  const icons = [
+    { id: "icon-logo", path: "./media/icons/logo.svg" },
+    { id: "icon-facebook", path: "./media/icons/facebook.svg" },
+    { id: "icon-instagram", path: "./media/icons/instagram.svg" },
+    { id: "icon-tiktok", path: "./media/icons/tiktok.svg" },
+    { id: "icon-booksy", path: "./media/icons/booksy.svg" },
+
+    // Mobile versions
+    { id: "icon-facebook-mobile", path: "./media/icons/facebook.svg" },
+    { id: "icon-instagram-mobile", path: "./media/icons/instagram.svg" },
+    { id: "icon-tiktok-mobile", path: "./media/icons/tiktok.svg" },
+    { id: "icon-booksy-mobile", path: "./media/icons/booksy.svg" }
+  ];
+
+  icons.forEach(icon => {
+    fetch(icon.path)
+      .then(response => response.text())
+      .then(data => {
+        const container = document.getElementById(icon.id);
+        if (container) {
+          container.innerHTML = data;
+          const svg = container.querySelector('svg');
+          if (svg) {
+            svg.classList.add('global-icon-svg');
+            svg.setAttribute('fill', 'currentColor');
+          }
+        }
+      });
+  });
+}
+
+
 // JS navbar-section
 function initNavbarSection() {
   const root = document.querySelector(".navbar-section");

@@ -266,6 +266,20 @@
     background: transparent;
   }
 
+  .global-icon-svg {
+    width: 26px;
+    height: 26px;
+    color: var(--neutral-black);
+    transition: color 0.6s ease;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  
+  .global-icon-svg:hover {
+    color: var(--primary-base);
+    transform: scale(1.05);
+  }
+
     /* CSS navbar-section */
     /* @keyframes fadeInTop {
       from {
@@ -390,6 +404,7 @@
       height: 26px;
       background-color: #cca848;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
     .navbar-section .navbar-right .social-icon + .social-icon,
     .navbar-section .mobile-nav-right .social-icon + .social-icon {
@@ -402,6 +417,7 @@
     .navbar-section .navbar-right .social-icon:hover,
     .navbar-section .mobile-nav-right .social-icon:hover {
       filter: brightness(0.8);
+      transform: scale(1.05);
     }
 
     .navbar-section .hamburger-icon {
