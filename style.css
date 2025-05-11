@@ -755,6 +755,51 @@
     color: var(--neutral-black);
   }
 
+.slider-section .center-cta .animated-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  background-color: var(--neutral-black);
+  color: var(--neutral-white);
+  font-size: var(--line-height-title-medium);
+  font-weight: 500;
+  overflow: hidden;
+  position: relative;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.slider-section .center-cta .animated-button .scrolling-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: scrollText 10s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.slider-section .center-cta .animated-button .scrolling-text span {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* animacja przesuwania tekstu co 2 sekundy */
+@keyframes scrollText {
+  0%, 20%   { transform: translateY(0); }
+  25%, 45%  { transform: translateY(-40px); }
+  50%, 70%  { transform: translateY(-80px); }
+  75%, 95%  { transform: translateY(-120px); }
+  100%      { transform: translateY(0); }
+}
+
   .slider-section .two-col {
     width: 100%;
     display: flex;
@@ -1443,9 +1488,9 @@ animation-play-state: paused;
   @media (min-width: 991px) {
     .card-section .card:hover .card-media {
     background-color: #a9a9a9; /* Darker gray on hover */
-    /* background-image: url('https://source.unsplash.com/400x400/?barber,style'); */
-    /* background-size: cover; */
-    /* background-position: center; */
+    background-image: url('./media/card-section/gif/1.gif');
+    background-size: cover;
+    background-position: center;
   }
 
   .card-section .no-hover .card-media:hover {
