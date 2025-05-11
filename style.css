@@ -315,9 +315,9 @@
       justify-content: space-between;
       height: 65px;
       position: fixed;
-      background-color: #e8e8e8e8;
-      /* backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); */
+      background-color: #e8e8e8c0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       top: 0;
       left: 0;
       right: 0;
@@ -491,9 +491,9 @@
       height: auto;
       max-height: 0;
       overflow: hidden;
-      background-color: #e8e8e8e8;
-      /* backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); */
+      background-color: #e8e8e8c0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       display: flex;
       opacity: 0;
       /* transform: translateY(-20px); */
