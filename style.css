@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("./media/fonts/SF-Pro-Rounded-Semibold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./media/fonts/SF-Pro-Rounded-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
     /* Typography Sizes - Desktop */
     --display-large: 57px; /* h1, var(--space-3xl) (48px), Główna hierarchia */
@@ -135,9 +149,13 @@
     --gradient-diagonal-2-to-3: linear-gradient(101.31deg, #cca848 0%, #82714e 100%);
     --gradient-horizontal-fade-white: linear-gradient(120.96deg, #ffffff 0%, #ceb37c 100%);
     --gradient-horizontal-fade-black: linear-gradient(120.96deg, #000000 0%, #82714e 100%);
+    /* --font-display: 'Inter', sans-serif;
+    --font-rest: 'Inter', sans-serif; */
+    
     --font-display: "SF Pro Display", sans-serif;
     --font-rest: "SF Pro Rounded", sans-serif;
 
+    
     /* Additional elements for card-section in root */
 
     --label-large: 14px;
@@ -243,9 +261,20 @@
       }
     }
     
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
     margin: 0;
     padding: 0;
+  }
+
+  p {
+    font-family: var(--font-rest);
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    font-family: var(--font-rest);
   }
 
   .gold {
@@ -348,7 +377,7 @@
     .navbar-section .navbar-center {
       display: flex;
       gap: var(--space-sm);
-      padding-right: 18px;
+      padding-right: 8px;
     }
     .navbar-section .navbar-center .nav-link {
       background: none;
