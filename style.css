@@ -348,7 +348,7 @@
     .navbar-section .navbar-center {
       display: flex;
       gap: var(--space-sm);
-      padding-right: 20px;
+      padding-right: 18px;
     }
     .navbar-section .navbar-center .nav-link {
       background: none;
@@ -2696,6 +2696,12 @@ animation-play-state: paused;
   margin-left: var(--space-md);
 }
 
+.footer-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 @media (max-width: 599px) {
   .footer-section {
     height: 420px;
@@ -2712,6 +2718,22 @@ animation-play-state: paused;
   .footer-icons span {
     margin-left: 6px;
   }
+}
+
+.footer-icon-white {
+  color: var(--neutral-white); /* lub po prostu #ffffff */
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+@media (max-width: 991px) {
+  .footer-icon-white {
+    width: 24px;
+    height: 24px;
+  }
+}
+.footer-icon-white:hover {
+  color: var(--primary-base); /* np. zielony lub inny akcent */
+  transform: scale(1.05);
 }
 
 /* CSS footer-section */

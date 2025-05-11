@@ -14,7 +14,13 @@ function loadGlobalSVGIcons() {
     { id: "icon-facebook-mobile", path: "./media/icons/facebook.svg" },
     { id: "icon-instagram-mobile", path: "./media/icons/instagram.svg" },
     { id: "icon-tiktok-mobile", path: "./media/icons/tiktok.svg" },
-    { id: "icon-booksy-mobile", path: "./media/icons/booksy.svg" }
+    { id: "icon-booksy-mobile", path: "./media/icons/booksy.svg" },
+
+    // Footer (white version) icons
+    { id: "icon-facebook-footer", path: "./media/icons/facebook.svg" },
+    { id: "icon-instagram-footer", path: "./media/icons/instagram.svg" },
+    { id: "icon-tiktok-footer", path: "./media/icons/tiktok.svg" },
+    { id: "icon-booksy-footer", path: "./media/icons/booksy.svg" }
   ];
 
   icons.forEach(icon => {
@@ -28,6 +34,15 @@ function loadGlobalSVGIcons() {
           if (svg) {
             svg.classList.add('global-icon-svg');
             svg.setAttribute('fill', 'currentColor');
+            // Dodaj klasę białą tylko dla footerowych ikon
+            if (
+              icon.id === "icon-facebook-footer" ||
+              icon.id === "icon-instagram-footer" ||
+              icon.id === "icon-tiktok-footer" ||
+              icon.id === "icon-booksy-footer"
+            ) {
+              svg.classList.add('footer-icon-white');
+            }
           }
         }
       });
