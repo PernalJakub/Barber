@@ -490,6 +490,24 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(title);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+const title2 = document.querySelector(".metamorphosis-title-2");
+const observer10 = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        title2.classList.add("animate-in");
+      }, 100);
+      observer10.unobserve(title2);
+    }
+  },
+  {
+    threshold: 0.1,
+  }
+);
+  observer10.observe(title2);
+});
+
 // JS inclusion-section
 
 // JS animation-section-1

@@ -1449,6 +1449,27 @@ animation-play-state: paused;
     transform: translateY(0);
   }
 
+  .metamorphosis-title-2 {
+    font-size: var(--display-medium);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  @media (max-width: 599px) {
+    .metamorphosis-title-2 {
+      font-size: var(--display-small-m);
+    }
+  }
+
+  .metamorphosis-title-2.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  
+
   /* CSS inclusion-section */
 
   /* CSS animation-section-1 */
@@ -2303,7 +2324,7 @@ animation-play-state: paused;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 78px;
+    margin-top: 35px;
     margin-bottom: 40px;
     }
     
