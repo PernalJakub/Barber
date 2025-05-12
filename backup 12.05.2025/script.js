@@ -1,3 +1,55 @@
+document.addEventListener("DOMContentLoaded", () => {
+  loadGlobalSVGIcons();
+});
+
+function loadGlobalSVGIcons() {
+  const icons = [
+    { id: "icon-logo", path: "./media/icons/logo.svg" },
+    { id: "icon-facebook", path: "./media/icons/facebook.svg" },
+    { id: "icon-instagram", path: "./media/icons/instagram.svg" },
+    { id: "icon-tiktok", path: "./media/icons/tiktok.svg" },
+    { id: "icon-booksy", path: "./media/icons/booksy.svg" },
+
+    // Mobile versions
+    { id: "icon-facebook-mobile", path: "./media/icons/facebook.svg" },
+    { id: "icon-instagram-mobile", path: "./media/icons/instagram.svg" },
+    { id: "icon-tiktok-mobile", path: "./media/icons/tiktok.svg" },
+    { id: "icon-booksy-mobile", path: "./media/icons/booksy.svg" },
+
+    // Footer (white version) icons
+    { id: "icon-facebook-footer", path: "./media/icons/facebook.svg" },
+    { id: "icon-instagram-footer", path: "./media/icons/instagram.svg" },
+    { id: "icon-tiktok-footer", path: "./media/icons/tiktok.svg" },
+    { id: "icon-booksy-footer", path: "./media/icons/booksy.svg" }
+  ];
+
+  icons.forEach(icon => {
+    fetch(icon.path)
+      .then(response => response.text())
+      .then(data => {
+        const container = document.getElementById(icon.id);
+        if (container) {
+          container.innerHTML = data;
+          const svg = container.querySelector('svg');
+          if (svg) {
+            svg.classList.add('global-icon-svg');
+            svg.setAttribute('fill', 'currentColor');
+            // Dodaj klasę białą tylko dla footerowych ikon
+            if (
+              icon.id === "icon-facebook-footer" ||
+              icon.id === "icon-instagram-footer" ||
+              icon.id === "icon-tiktok-footer" ||
+              icon.id === "icon-booksy-footer"
+            ) {
+              svg.classList.add('footer-icon-white');
+            }
+          }
+        }
+      });
+  });
+}
+
+
 // JS navbar-section
 function initNavbarSection() {
   const root = document.querySelector(".navbar-section");
@@ -20,6 +72,44 @@ function initNavbarSection() {
   }
   window.addEventListener("scroll", updateActiveLink);
   updateActiveLink();
+
+  // Scroll to center of section on nav-link click
+  links.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Zamknij menu mobilne jeśli otwarte
+      const hamburger = document.querySelector(".hamburger-icon");
+      const overlay = document.querySelector(".mobile-nav-overlay");
+      if (hamburger && overlay && overlay.classList.contains("active")) {
+        hamburger.classList.remove("active");
+        overlay.classList.add("hiding");
+        document.body.classList.remove("no-scroll");
+        setTimeout(() => {
+          overlay.classList.remove("active");
+          overlay.classList.remove("hiding");
+        }, 600);
+      }
+
+      const navbar = document.querySelector(".navbar-container");
+      navbar.classList.add("disable-auto-hide");
+      setTimeout(() => {
+        navbar.classList.remove("disable-auto-hide");
+        navbar.classList.remove("hide-navbar");
+      }, 1000);
+      const section = document.getElementById(link.dataset.section);
+      if (section) {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const targetScroll = sectionTop - (window.innerHeight / 2) + (sectionHeight / 2);
+        
+        window.scrollTo({
+          top: targetScroll,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -450,6 +540,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
   observer.observe(title);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+const title2 = document.querySelector(".metamorphosis-title-2");
+const observer10 = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        title2.classList.add("animate-in");
+      }, 100);
+      observer10.unobserve(title2);
+    }
+  },
+  {
+    threshold: 0.1,
+  }
+);
+  observer10.observe(title2);
 });
 
 // JS inclusion-section

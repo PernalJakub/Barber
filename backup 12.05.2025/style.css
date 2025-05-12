@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("./media/fonts/SF-Pro-Rounded-Semibold.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Rounded";
+  src: url("./media/fonts/SF-Pro-Rounded-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
     /* Typography Sizes - Desktop */
     --display-large: 57px; /* h1, var(--space-3xl) (48px), Główna hierarchia */
@@ -135,9 +149,13 @@
     --gradient-diagonal-2-to-3: linear-gradient(101.31deg, #cca848 0%, #82714e 100%);
     --gradient-horizontal-fade-white: linear-gradient(120.96deg, #ffffff 0%, #ceb37c 100%);
     --gradient-horizontal-fade-black: linear-gradient(120.96deg, #000000 0%, #82714e 100%);
+    /* --font-display: 'Inter', sans-serif;
+    --font-rest: 'Inter', sans-serif; */
+    
     --font-display: "SF Pro Display", sans-serif;
     --font-rest: "SF Pro Rounded", sans-serif;
 
+    
     /* Additional elements for card-section in root */
 
     --label-large: 14px;
@@ -243,9 +261,20 @@
       }
     }
     
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
     margin: 0;
     padding: 0;
+  }
+
+  p {
+    font-family: var(--font-rest);
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    font-family: var(--font-rest);
   }
 
   .gold {
@@ -264,6 +293,26 @@
   body::-webkit-scrollbar {
     width: 0px;
     background: transparent;
+  }
+
+  .global-icon-svg {
+    width: 26px;
+    height: 26px;
+    color: var(--neutral-black);
+    transition: color 0.6s ease;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+  @media (max-width: 991px) {
+    .global-icon-svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  .global-icon-svg:hover {
+    color: var(--primary-base);
+    transform: scale(1.05);
   }
 
     /* CSS navbar-section */
@@ -295,9 +344,9 @@
       justify-content: space-between;
       height: 65px;
       position: fixed;
-      background-color: #e8e8e8e8;
-      /* backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); */
+      background-color: #e8e8e8c0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       top: 0;
       left: 0;
       right: 0;
@@ -328,7 +377,7 @@
     .navbar-section .navbar-center {
       display: flex;
       gap: var(--space-sm);
-      padding-right: 20px;
+      padding-right: 8px;
     }
     .navbar-section .navbar-center .nav-link {
       background: none;
@@ -343,6 +392,43 @@
     .navbar-section .navbar-center .nav-link.active {
       color: var(--primary-base);
     }
+
+    .navbar-container.disable-auto-hide.hide-navbar {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+.navbar-section .navbar-center .highlighted,
+.navbar-section .mobile-nav-center .highlighted {
+      background-color: var(--tertiary-light) !important;
+      box-shadow: inset 0 0 12px var(--tertiary-very-light) !important;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+}
+
+.navbar-section .navbar-center .highlighted::after,
+.navbar-section .mobile-nav-center .highlighted::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%; 
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
     .navbar-section .navbar-right {
       display: flex;
       align-items: center;
@@ -353,6 +439,7 @@
       height: 26px;
       background-color: #cca848;
       cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
     .navbar-section .navbar-right .social-icon + .social-icon,
     .navbar-section .mobile-nav-right .social-icon + .social-icon {
@@ -365,6 +452,7 @@
     .navbar-section .navbar-right .social-icon:hover,
     .navbar-section .mobile-nav-right .social-icon:hover {
       filter: brightness(0.8);
+      transform: scale(1.05);
     }
 
     .navbar-section .hamburger-icon {
@@ -432,9 +520,9 @@
       height: auto;
       max-height: 0;
       overflow: hidden;
-      background-color: #e8e8e8e8;
-      /* backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px); */
+      background-color: #e8e8e8c0;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       display: flex;
       opacity: 0;
       /* transform: translateY(-20px); */
@@ -666,6 +754,51 @@
     background-color: var(--neutral-very-light);
     color: var(--neutral-black);
   }
+
+.slider-section .center-cta .animated-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  background-color: var(--neutral-black);
+  color: var(--neutral-white);
+  font-size: var(--line-height-title-medium);
+  font-weight: 500;
+  overflow: hidden;
+  position: relative;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.slider-section .center-cta .animated-button .scrolling-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: scrollText 10s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.slider-section .center-cta .animated-button .scrolling-text span {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* animacja przesuwania tekstu co 2 sekundy */
+@keyframes scrollText {
+  0%, 20%   { transform: translateY(0); }
+  25%, 45%  { transform: translateY(-40px); }
+  50%, 70%  { transform: translateY(-80px); }
+  75%, 95%  { transform: translateY(-120px); }
+  100%      { transform: translateY(0); }
+}
 
   .slider-section .two-col {
     width: 100%;
@@ -1193,8 +1326,9 @@ transition-delay: 0.25s;
   .card-section .card-inner {
     width: var(--inner-card-width);
     height: var(--inner-card-height);
-    background-color: var(--tertiary-light);
+    background-color: var(--neutral-black);
     border-radius: var(--card-radius);
+    color: var(--neutral-white);
     flex-grow: 1;
     box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.25);
     box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.25);
@@ -1343,9 +1477,10 @@ animation-play-state: paused;
   .card-section .card-media {
     width: 100%;
     height: 100%;
-    border: 1px solid white;
+    border: 1.5px solid #E070C8;
     position: relative;
     border-radius: var(--card-radius);
+    background-color: var(--neutral-black);
   }
   
   .card-section .card-media {
@@ -1354,10 +1489,10 @@ animation-play-state: paused;
   
   @media (min-width: 991px) {
     .card-section .card:hover .card-media {
-    background-color: #a9a9a9; /* Darker gray on hover */
-    /* background-image: url('https://source.unsplash.com/400x400/?barber,style'); */
-    /* background-size: cover; */
-    /* background-position: center; */
+    background-color: var(--neutral-black); /* Darker gray on hover */
+    background-image: url('./media/card-section/gif/2.webp');
+    background-size: cover;
+    background-position: center;
   }
 
   .card-section .no-hover .card-media:hover {
@@ -1411,6 +1546,27 @@ animation-play-state: paused;
     opacity: 1;
     transform: translateY(0);
   }
+
+  .metamorphosis-title-2 {
+    font-size: var(--display-medium);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  @media (max-width: 599px) {
+    .metamorphosis-title-2 {
+      font-size: var(--display-small-m);
+    }
+  }
+
+  .metamorphosis-title-2.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  
 
   /* CSS inclusion-section */
 
@@ -2266,7 +2422,7 @@ animation-play-state: paused;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 78px;
+    margin-top: 35px;
     margin-bottom: 40px;
     }
     
@@ -2616,6 +2772,12 @@ animation-play-state: paused;
   margin-left: var(--space-md);
 }
 
+.footer-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 @media (max-width: 599px) {
   .footer-section {
     height: 420px;
@@ -2632,6 +2794,22 @@ animation-play-state: paused;
   .footer-icons span {
     margin-left: 6px;
   }
+}
+
+.footer-icon-white {
+  color: var(--neutral-white); /* lub po prostu #ffffff */
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+@media (max-width: 991px) {
+  .footer-icon-white {
+    width: 24px;
+    height: 24px;
+  }
+}
+.footer-icon-white:hover {
+  color: var(--primary-base); /* np. zielony lub inny akcent */
+  transform: scale(1.05);
 }
 
 /* CSS footer-section */

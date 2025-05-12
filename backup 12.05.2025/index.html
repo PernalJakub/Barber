@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dziupla Barber</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,15 +19,15 @@
       <div class="navbar-center">
         <button class="nav-link" data-section="card-section">O nas</button>
         <button class="nav-link" data-section="animated-section-1">Oferta</button>
-        <button class="nav-link" data-section="content-section-1">Szkolenia</button>
+        <button class="nav-link highlighted" data-section="content-section-1">Szkolenia</button>
         <button class="nav-link" data-section="map-section">Znajdź Nas</button>        
         <button class="nav-link" data-section="footer-section">Kontakt</button>
       </div>
       <button class="hamburger-icon" aria-label="Toggle menu"></button>
       <div class="navbar-right">
-        <div class="social-icon"></div>
-        <div class="social-icon"></div>
-        <div class="social-icon"></div>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" id="icon-instagram"></a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener" id="icon-tiktok"></a>
+        <a href="https://booksy.com" target="_blank" rel="noopener" id="icon-booksy"></a>
       </div>
       </div>
     </div>
@@ -34,14 +35,14 @@
       <div class="mobile-nav-center">
         <button class="nav-link" data-section="card-section">O nas</button>
         <button class="nav-link" data-section="animated-section-1">Oferta</button>
-        <button class="nav-link" data-section="content-section-1">Szkolenia</button>
+        <button class="nav-link highlighted" data-section="content-section-1">Szkolenia</button>
         <button class="nav-link" data-section="map-section">Znajdź Nas</button>     
         <button class="nav-link" data-section="footer-section">Kontakt</button>
       </div>
       <div class="mobile-nav-right">
-        <div class="social-icon"></div>
-        <div class="social-icon"></div>
-        <div class="social-icon"></div>
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" id="icon-instagram-mobile"></a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener" id="icon-tiktok-mobile"></a>
+        <a href="https://booksy.com" target="_blank" rel="noopener" id="icon-booksy-mobile"></a>
       </div>
     </div>
 </section>
@@ -55,7 +56,14 @@
           <div class="fade-in-item fix">
             <h2>Witamy w zielonym świecie</h2>
             <p>Odkryj świeżość, naturę i lekkość w naszym stylu.</p>
-            <a href="#">Zacznij teraz</a>
+            <div class="animated-button">
+              <div class="scrolling-text">
+                <span>włosy.</span>
+                <span>broda.</span>
+                <span>szkolenia.</span>
+                <span>dołącz do dziuplaków.</span>
+              </div>
+            </div>
           </div>
           <div class="intro-overlay" id="intro-animation">
             <div class="intro-logo-wrap">
@@ -500,6 +508,12 @@
     </div>
   </section>
 
+  <section class="inclusion-section">
+    <div class="metamorphosis-section">
+      <h2 class="metamorphosis-title-2">Twoja metamorfoza<br>zaczyna się <span class="gold">tutaj.</span></h2>
+    </div>
+  </section>
+
   <section class="map-section" id="map-section">
     <div class="cardexpanded">
     <div class="card">
@@ -565,9 +579,9 @@
         <p class="footer-note">GreenSite 2024</p>
         <p class="footer-note"><a href="#">Manage Cookies</a></p>
         <div class="footer-icons">
-          <span>🎵</span>
-          <span>📷</span>
-          <span>📘</span>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener" id="icon-instagram-footer"></a>
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener" id="icon-tiktok-footer"></a>
+          <a href="https://booksy.com" target="_blank" rel="noopener" id="icon-booksy-footer"></a>
         </div>
       </div>
     </div>

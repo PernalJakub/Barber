@@ -416,6 +416,9 @@ function initCardSection() {
   const root = document.querySelector(".card-section");
   if (!root) return;
 
+  // 1. Wykrywanie Safari
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   const track = root.querySelector(".card-track");
   const leftArrow = root.querySelector(".cs-arrow.left");
   const rightArrow = root.querySelector(".cs-arrow.right");
@@ -488,23 +491,132 @@ function initCardSection() {
     });
   }, 3000);
 
-  root.querySelectorAll('.card-button').forEach(button => {
+  // --- Overlay img per card ---
+  // Store overlayImgs for later use in event handlers
+  const overlayImgs = [];
+
+  root.querySelectorAll('.card').forEach((card, index) => {
+    const media = card.querySelector('.card-media');
+    const cardIndex = index + 1; // Zakładamy pliki 1.webp, 1r.webp itd.
+
+    // Upewnij się, że overlayImg jest dodane tylko do .card-media
+    let overlayImg = media.querySelector('.card-overlay');
+    if (!overlayImg) {
+      overlayImg = document.createElement('img');
+      overlayImg.className = 'card-overlay';
+      media.appendChild(overlayImg);
+    }
+    overlayImg.src = `./media/card-section/gif/${cardIndex}_1.png`;
+    overlayImg.style.objectPosition = 'bottom';
+    overlayImg.style.position = 'absolute';
+    overlayImg.style.top = '0';
+    // Center overlay horizontally
+    overlayImg.style.left = '50%';
+    overlayImg.style.transform = 'translateX(-50%)';
+    overlayImg.style.width = 'auto';
+    overlayImg.style.height = '100%';
+    overlayImg.style.objectFit = 'contain';
+    overlayImg.style.pointerEvents = 'none';
+    overlayImg.style.zIndex = '2';
+    overlayImgs[index] = overlayImg;
+
+    card.addEventListener('mouseenter', () => {
+      if (!card.classList.contains('expanded') && !card.classList.contains('no-hover')) {
+        if (isSafari) {
+          media.style.backgroundImage = "none";
+          setTimeout(() => {
+            media.style.backgroundImage = `url('./media/card-section/gif/${cardIndex}.webp?${Date.now()}')`;
+            media.style.backgroundSize = "cover";
+            media.style.backgroundPosition = "center";
+          }, 1);
+        } else {
+          media.style.backgroundImage = `url('./media/card-section/gif/${cardIndex}.webp?${Date.now()}')`;
+          media.style.backgroundSize = "cover";
+          media.style.backgroundPosition = "center";
+        }
+        // Overlay change on hover
+        overlayImg.src = `./media/card-section/gif/${cardIndex}_2.png`;
+      }
+    });
+
+    card.addEventListener('mouseleave', () => {
+      if (!card.classList.contains('expanded') && !card.classList.contains('no-hover')) {
+        if (isSafari) {
+          media.style.backgroundImage = "none";
+          setTimeout(() => {
+            media.style.backgroundImage = `url('./media/card-section/gif/${cardIndex}r.webp?${Date.now()}')`;
+            media.style.backgroundSize = "cover";
+            media.style.backgroundPosition = "center";
+          }, 1);
+        } else {
+          media.style.backgroundImage = `url('./media/card-section/gif/${cardIndex}r.webp?${Date.now()}')`;
+          media.style.backgroundSize = "cover";
+          media.style.backgroundPosition = "center";
+        }
+        // Overlay revert on leave
+        overlayImg.src = `./media/card-section/gif/${cardIndex}_1.png`;
+      }
+    });
+  });
+
+  root.querySelectorAll('.card-button').forEach((button, btnIdx) => {
     button.addEventListener('click', (e) => {
       const card = e.target.closest('.card');
       if (!card) return;
 
       card.classList.toggle('expanded');
       const media = card.querySelector('.card-media');
+      // Find index of card for background image
+      const allCards = Array.from(root.querySelectorAll('.card'));
+      const index = allCards.indexOf(card);
+      // Obsługa Safari i innych przeglądarek
       if (card.classList.contains('expanded')) {
-        media.style.backgroundColor = 'white';
-        media.style.backgroundImage = "url('https://source.unsplash.com/400x400/?barber,style')";
-        media.style.backgroundSize = 'cover';
-        media.style.backgroundPosition = 'center';
+        media.style.backgroundColor = 'black';
+        if (isSafari) {
+          media.style.backgroundImage = "none";
+          setTimeout(() => {
+            media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}ex.webp')`;
+            media.style.backgroundSize = 'cover';
+            media.style.backgroundPosition = 'top';
+          }, 1);
+        } else {
+          media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}ex.webp?${Date.now()}')`;
+          media.style.backgroundSize = 'cover';
+          media.style.backgroundPosition = 'top';
+        }
+        // Overlay change for expanded
+        if (overlayImgs[index]) {
+          overlayImgs[index].src = `./media/card-section/gif/${index + 1}_3.png`;
+          overlayImgs[index].style.objectPosition = 'top';
+        }
       } else {
         media.style.backgroundColor = '';
-        media.style.backgroundImage = '';
+        if (isSafari) {
+          media.style.backgroundImage = "none";
+          setTimeout(() => {
+            media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}rex.webp')`;
+            media.style.backgroundSize = 'cover';
+            media.style.backgroundPosition = 'center';
+          }, 1);
+        } else {
+          media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}rex.webp?${Date.now()}')`;
+          media.style.backgroundSize = 'cover';
+          media.style.backgroundPosition = 'center';
+        }
+        // Overlay revert for collapsed
+        if (overlayImgs[index]) {
+          overlayImgs[index].src = `./media/card-section/gif/${index + 1}_1.png`;
+          overlayImgs[index].style.objectPosition = 'center';
+        }
       }
-      card.classList.toggle('no-hover');
+      // Toggle no-hover for expanded/normal
+      card.classList.toggle('no-hover', card.classList.contains('expanded'));
+      // Zapewnij bezpieczeństwo: wymuś poprawną klasę no-hover zgodnie ze stanem expanded
+      if (card.classList.contains('expanded')) {
+        card.classList.add('no-hover');
+      } else {
+        card.classList.remove('no-hover');
+      }
 
       const mainBtn = card.querySelector('.card-main-row .card-button');
       if (mainBtn && mainBtn.textContent.trim() === 'więcej') {
@@ -796,6 +908,8 @@ document.addEventListener("DOMContentLoaded", () => {
     observer5.observe(item);
   });
 });
+
+
 
 
 // JS card-section
