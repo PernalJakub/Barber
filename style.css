@@ -1482,6 +1482,25 @@ animation-play-state: paused;
     border-radius: var(--card-radius);
     background-color: var(--neutral-black);
   }
+
+  .card-section .card-media.card1 {
+    border: 1.5px solid #E0BE70;
+  }
+  .card-section .card-media.card2 {
+    border: 1.5px solid #E070C8;
+  }
+  .card-section .card-media.card3 {
+    border: 1.5px solid #08D4EF;
+  }
+  .card-section .card-media.card4 {
+    border: 1.5px solid #E0D970;
+  }
+  .card-section .card-media.card5 {
+    border: 1.5px solid #E0BE70;
+  }
+  .card-section .card-media.card6 {
+    border: 1.5px solid #E070C8;
+  }
   
   .card-section .card-media {
     transition: background-image 0.6s ease, transform 0.6s ease, background-color 0.6s ease;
