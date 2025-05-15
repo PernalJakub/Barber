@@ -169,7 +169,7 @@
   }
 
   .card-section .card.expanded .card-media {
-    /* background-color: var(--neutral-white); Permanent background when expanded */
+    background-color: var(--neutral-white); /* Permanent background when expanded */
     background-image: url('https://source.unsplash.com/400x400/?barber,style');
     background-size: cover;
     background-position: center;
@@ -177,7 +177,7 @@
   }
 
   .card-section .card.expanded:hover .card-media {
-    /* background-color: var(--neutral-white); Lock hover effect */
+    background-color: var(--neutral-white); /* Lock hover effect */
     background-image: url('https://source.unsplash.com/400x400/?barber,style');
     background-size: cover;
     background-position: center;
@@ -1187,7 +1187,9 @@ transition-delay: 0.25s;
 
 
 
-.card-section {
+  /* CSS card-section */
+
+ .card-section {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -1471,7 +1473,7 @@ animation-play-state: paused;
     transform: translateY(0);
     pointer-events: auto;
   }
-  
+
   .card-section .card-media {
     width: 100%;
     height: 100%;

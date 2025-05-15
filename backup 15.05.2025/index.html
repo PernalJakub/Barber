@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dziupla Barber</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="navbar-section">
+    <div class="navbar-container hide-navbar start-show-navbar">
+      <div class="navbar-inner">
+      <div class="navbar-left delay-0">
+        <div class="navbar-logo"></div>
+        <span class="navbar-company">twoja firma.</span>
+      </div> 
+      <div class="navbar-center">
+        <button class="nav-link" data-section="card-section">O nas</button>
+        <button class="nav-link" data-section="animated-section-1">Oferta</button>
+        <button class="nav-link highlighted" data-section="content-section-1">Szkolenia</button>
+        <button class="nav-link" data-section="map-section">Znajdź Nas</button>        
+        <button class="nav-link" data-section="footer-section">Kontakt</button>
+      </div>
+      <button class="hamburger-icon" aria-label="Toggle menu"></button>
+      <div class="navbar-right">
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" id="icon-instagram"></a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener" id="icon-tiktok"></a>
+        <a href="https://booksy.com" target="_blank" rel="noopener" id="icon-booksy"></a>
+      </div>
+      </div>
+    </div>
+    <div class="mobile-nav-overlay">
+      <div class="mobile-nav-center">
+        <button class="nav-link" data-section="card-section">O nas</button>
+        <button class="nav-link" data-section="animated-section-1">Oferta</button>
+        <button class="nav-link highlighted" data-section="content-section-1">Szkolenia</button>
+        <button class="nav-link" data-section="map-section">Znajdź Nas</button>     
+        <button class="nav-link" data-section="footer-section">Kontakt</button>
+      </div>
+      <div class="mobile-nav-right">
+        <a href="https://www.instagram.com" target="_blank" rel="noopener" id="icon-instagram-mobile"></a>
+        <a href="https://www.tiktok.com" target="_blank" rel="noopener" id="icon-tiktok-mobile"></a>
+        <a href="https://booksy.com" target="_blank" rel="noopener" id="icon-booksy-mobile"></a>
+      </div>
+    </div>
+</section>
+
+  <section class="hero-section slider-section" style="margin-top: 2rem;">
+    <div class="slider-container">
+      <div class="card-track" id="track">
+        <div class="card ghost"></div>
+        <!-- KARTA 1 -->
+        <div class="card bg1 center-cta bg-image">
+          <div class="fade-in-item fix">
+            <h2>Witamy w zielonym świecie</h2>
+            <p>Odkryj świeżość, naturę i lekkość w naszym stylu.</p>
+            <div class="animated-button">
+              <div class="scrolling-text">
+                <span>włosy.</span>
+                <span>broda.</span>
+                <span>szkolenia.</span>
+                <span>dołącz do dziuplaków.</span>
+              </div>
+            </div>
+          </div>
+          <div class="intro-overlay" id="intro-animation">
+            <div class="intro-logo-wrap">
+              <div class="logo-square"></div>
+              <h2 class="typing-text"><span class="line1">twoja firma.</span></h2>
+            </div>
+          </div>
+          <button class="arrow left"><span>&lt;</span></button>
+          <button class="arrow right"><span>&gt;</span></button>
+        </div>
+
+        <!-- KARTA 2 -->
+        <div class="card fade-lock bg2">
+          <div class="two-col">
+            <div class="left fade-in-item">
+              <h2>Świeże podejście</h2>
+              <p>Tworzymy rozwiązania, które są nowoczesne, zielone i pełne życia.</p>
+            </div>
+            <div class="right fade-in-item">
+              <img src="https://source.unsplash.com/600x400/?nature,leaf" alt="Zieleń">
+            </div>
+          </div>
+          <button class="arrow left"><span>&lt;</span></button>
+          <button class="arrow right"><span>&gt;</span></button>
+        </div>
+
+        <!-- KARTA 3 -->
+        <div class="card bg3 fade-lock">
+          <div class="two-col">
+            <div class="left fade-in-item">
+              <h2>Technologia i natura</h2>
+              <p>Łączymy innowacje z ekologicznym podejściem. Zainspiruj się zieloną transformacją.</p>
+            </div>
+            <div class="right fade-in-item">
+              <img src="https://source.unsplash.com/600x400/?technology,nature" alt="Tech Natura">
+            </div>
+          </div>
+          <button class="arrow left"><span>&lt;</span></button>
+          <button class="arrow right"><span>&gt;</span></button>
+        </div>
+
+        <!-- KARTA 4 -->
+        <div class="card bg4 center-cta fade-lock fade-in-item">
+          <div>
+            <h2>Gotowy na zmiany?</h2>
+            <p>Dołącz do nas i zobacz, jak prostota może zmieniać świat.</p>
+            <a href="#">Zapisz się</a>
+          </div>
+          <button class="arrow left"><span>&lt;</span></button>
+          <button class="arrow right"><span>&gt;</span></button>
+        </div>
+        <div class="card ghost"></div>
+      </div>
+    </div>
+
+    <!-- Kropki -->
+    <div class="dots fade-lock fade-in-item" id="dots"></div>
+  </section>
+
+  <section class="card-section" id="card-section" style="margin-top: 0rem;">
+    <div class="card-container-label">
+      <div class="container-label">
+        <h3 class="fade-in-item delay-0">Opis sekcji</h3>
+        <p class="fade-in-item delay-0">Opis kart</p>
+      </div>
+      <div class="container-arrows">
+        <button class="cs-arrow left fade-in-item delay-0"><span>&lt;</span></button>
+        <button class="cs-arrow right fade-in-item delay-0"><span>&gt;</span></button>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card-track">
+        <div class="card fade-in-item delay-0">
+          <div class="card-label">Karta 1</div>
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media card1"></div>
+            </div>
+            <div class="card-bottom">
+              <div class="card-bottom-row card-main-row">
+                <div class="card-title">Nazwa1</div>
+                <button class="card-button">więcej</button>
+              </div>
+              <div class="card-bottom-row card-extra-row">
+                <div class="card-subtitle">SOCIAL</div>
+                <button class="card-button alt">inny</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-1">
+          <div class="card-label">Karta 2</div>
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media card2"></div>
+            </div>
+            <div class="card-bottom">
+              <div class="card-bottom-row card-main-row">
+                <div class="card-title">Nazwa2</div>
+                <button class="card-button">więcej</button>
+              </div>
+              <div class="card-bottom-row card-extra-row">
+                <div class="card-subtitle">SOCIAL</div>
+                <button class="card-button alt">inny</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-2">
+          <div class="card-label">Karta 3</div>
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media card3"></div>
+            </div>
+            <div class="card-bottom">
+              <div class="card-bottom-row card-main-row">
+                <div class="card-title">Nazwa3</div>
+                <button class="card-button">więcej</button>
+              </div>
+              <div class="card-bottom-row card-extra-row">
+                <div class="card-subtitle">SOCIAL</div>
+                <button class="card-button alt">inny</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-3">
+          <div class="card-label">Karta 4</div>
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media card4"></div>
+            </div>
+            <div class="card-bottom">
+              <div class="card-bottom-row card-main-row">
+                <div class="card-title">Nazwa4</div>
+                <button class="card-button">więcej</button>
+              </div>
+              <div class="card-bottom-row card-extra-row">
+                <div class="card-subtitle">SOCIAL</div>
+                <button class="card-button alt">inny</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-4">
+          <div class="card-label">Karta 5</div>
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media card5"></div>
+            </div>
+            <div class="card-bottom">
+              <div class="card-bottom-row card-main-row">
+                <div class="card-title">Nazwa5</div>
+                <button class="card-button">więcej</button>
+              </div>
+              <div class="card-bottom-row card-extra-row">
+                <div class="card-subtitle">SOCIAL</div>
+                <button class="card-button alt">inny</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-5">
+          <div class="card-label">Karta 6</div>
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media card6"></div>
+            </div>
+            <div class="card-bottom">
+              <div class="card-bottom-row card-main-row">
+                <div class="card-title">Nazwa6</div>
+                <button class="card-button">więcej</button>
+              </div>
+              <div class="card-bottom-row card-extra-row">
+                <div class="card-subtitle">SOCIAL</div>
+                <button class="card-button alt">inny</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="inclusion-section">
+    <div class="metamorphosis-section">
+      <h2 class="metamorphosis-title">Twoja metamorfoza<br>zaczyna się <span class="gold">tutaj.</span></h2>
+    </div>
+  </section>
+
+  <section class="animated-section-1" id="animated-section-1">
+    <div class="animated-container">
+      <div class="rotated-wrapper hidden">
+        <div class="service-card delay-1">
+        <div class="service-card-ghost delay-1">
+          <h2 class="service-title">włosy</h2>
+          <div class="service-line"></div>
+          <ul class="service-list">
+            <li>strzyżenie klasyczne</li>
+            <li>fade (cieniowanie)</li>
+            <li>strzyżenie maszynką</li>
+            <li>modelowanie włosów</li>
+            <li>koloryzacja</li>
+            <li>odsiwianie</li>
+            <li>kuracje pielęgnacyjne</li>
+          </ul>
+        </div>
+        </div>
+        <div class="service-card delay-2">
+        <div class="service-card-ghost delay-2">
+          <h2 class="service-title">broda</h2>
+          <div class="service-line"></div>
+          <ul class="service-list">
+            <li>strzyżenie i modelowanie brody</li>
+            <li>cieniowanie brody</li>
+            <li>golibroda</li>
+            <li>trimming (przycinanie)</li>
+            <li>pielęgnacja brody</li>
+            <li>stylizacja wąsów</li>
+            <li>farbowanie brody</li>
+          </ul>
+        </div>
+        </div>
+        <div class="service-card delay-3">
+        <div class="service-card-ghost delay-3">
+          <h2 class="service-title">inne</h2>
+          <div class="service-line"></div>
+          <ul class="service-list">
+            <li>parówka na gorąco</li>
+            <li>oczyszczanie twarzy</li>
+            <li>depilacja woskiem</li>
+            <li>zabiegi anti-aging</li>
+            <li>zabiegi na skórę głowy</li>
+            <li>usuwanie owłosienia z karku</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    <div class="mobile-card-switcher-ghost">
+      <div class="mobile-card-switcher hidden">
+        <div class="mobile-tabs">
+          <button class="tab-btn active" data-index="0">włosy</button>
+          <button class="tab-btn fix" data-index="1">broda</button>
+          <button class="tab-btn" data-index="2">inne</button>
+        </div>
+      
+        <div class="mobile-card" data-index="0">
+          <div class="service-line"></div>
+          <ul class="service-list">
+            <li class="fade-in-li-as1">strzyżenie klasyczne</li>
+            <li class="fade-in-li-as1">fade (cieniowanie)</li>
+            <li class="fade-in-li-as1">strzyżenie maszynką</li>
+            <li class="fade-in-li-as1">modelowanie włosów</li>
+            <li class="fade-in-li-as1">koloryzacja</li>
+            <li class="fade-in-li-as1">odsiwianie</li>
+            <li class="fade-in-li-as1">kuracje pielęgnacyjne</li>
+          </ul>
+        </div>
+      
+        <div class="mobile-card" data-index="1">
+          <div class="service-line"></div>
+          <ul class="service-list">
+            <li class="fade-in-li-as1">strzyżenie i modelowanie brody</li>
+            <li class="fade-in-li-as1">cieniowanie brody</li>
+            <li class="fade-in-li-as1">golibroda</li>
+            <li class="fade-in-li-as1">trimming (przycinanie)</li>
+            <li class="fade-in-li-as1">pielęgnacja brody</li>
+            <li class="fade-in-li-as1">stylizacja wąsów</li>
+            <li class="fade-in-li-as1">farbowanie brody</li>
+          </ul>
+        </div>
+        <div class="mobile-card" data-index="2">
+          <div class="service-line"></div>
+          <ul class="service-list">
+            <li class="fade-in-li-as1">parówka na gorąco</li>
+            <li class="fade-in-li-as1">oczyszczanie twarzy</li>
+            <li class="fade-in-li-as1">depilacja woskiem</li>
+            <li class="fade-in-li-as1">zabiegi anti-aging</li>
+            <li class="fade-in-li-as1">zabiegi na skórę głowy</li>
+            <li class="fade-in-li-as1">usuwanie owłosienia z karku</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="content-section-1" id="content-section-1">
+    <div class="card">
+      <div class="two-col">
+        <div class="left">
+          <div class="content-for-animate">
+          <h2>Świeże podejście</h2>
+          <p>Tworzymy rozwiązania, które są nowoczesne, zielone i pełne życia.</p>
+          </div>
+        </div>
+        <div class="right">
+          <img src="https://source.unsplash.com/600x400/?nature,leaf" alt="Zieleń">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="animated-section-2">
+    <div class="animated-container">
+      <div class="rotated-wrapper-container">
+        <div class="rotated-wrapper">
+          <div id="svg-placeholder-1" class="icon-svg"></div>
+          <div id="svg-placeholder-2" class="icon-svg"></div>
+          <div id="svg-placeholder-3" class="icon-svg"></div>
+          <div id="svg-placeholder-4" class="icon-svg"></div>
+          <div id="svg-placeholder-5" class="icon-svg"></div>
+          <div id="svg-placeholder-6" class="icon-svg"></div>
+          <div id="svg-placeholder-7" class="icon-svg"></div>
+          <div id="svg-placeholder-8" class="icon-svg"></div>
+          <div id="svg-placeholder-9" class="icon-svg"></div>
+          <!-- Duplicate -->
+          <div id="svg-placeholder-1-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-2-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-3-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-4-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-5-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-6-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-7-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-8-dup" class="icon-svg"></div>
+          <div id="svg-placeholder-9-dup" class="icon-svg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card-section-2">
+    <div class="card-container-label">
+      <div class="container-label">
+        <h3 class="fade-in-item delay-0">Opis sekcji</h3>
+        <p class="fade-in-item delay-0">Opis kart</p>
+      </div>
+      <div class="container-arrows">
+        <button class="cs-arrow left fade-in-item delay-0"><span>&lt;</span></button>
+        <button class="cs-arrow right fade-in-item delay-0"><span>&gt;</span></button>
+      </div>
+    </div>
+    <div class="card-container">
+      <div class="card-track">
+        <div class="card fade-in-item delay-0">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media">
+                <div class="comentery">
+                  <p>“Nie tylko dla panów! Ekipa Barber Spot pomogła mi zrewitalizować włosy mojego męża, a ja nie mogę przestać się nimi zachwycać. Stylowe wnętrze i świetna atmosfera to dodatkowe atuty!”</p>
+                </div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <div class="card-bottom">
+                <div class="card-title">Marta Nowak</div>
+                <div class="card-subtitle">redaktorka działu mody</div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-1">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media">
+                <div class="comentery">
+                  <p>“Szukałem inspiracji i trafiłem na Barber Spot. Kurs online przewyższył moje oczekiwania – teraz wiem, jak podnieść swoje umiejętności na wyższy poziom. Polecam każdemu w branży!”</p>
+                </div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <div class="card-bottom">
+                <div class="card-title">Tomasz W.</div>
+                <div class="card-subtitle">barber i trener</div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-2">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media">
+                <div class="comentery">
+                  <p>“Barber Spot to miejsce, w którym poczułem się naprawdę zadbany. Profesjonalizm w każdym calu, a moja broda nigdy nie wyglądała lepiej! Polecam każdemu, kto chce wyglądać jak milion dolarów.”</p>
+                </div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <div class="card-bottom">
+                <div class="card-title">Jan Kowalski</div>
+                <div class="card-subtitle">influencer lifestyle’owy</div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-3">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media">
+                <div class="comentery">
+                  <p>“Nie tylko dla panów! Ekipa Barber Spot pomogła mi zrewitalizować włosy mojego męża, a ja nie mogę przestać się nimi zachwycać. Stylowe wnętrze i świetna atmosfera to dodatkowe atuty!”</p>
+                </div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <div class="card-bottom">
+                <div class="card-title">Marta Nowak</div>
+                <div class="card-subtitle">redaktorka działu mody</div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-4">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media">
+                <div class="comentery">
+                  <p>“Szukałem inspiracji i trafiłem na Barber Spot. Kurs online przewyższył moje oczekiwania – teraz wiem, jak podnieść swoje umiejętności na wyższy poziom. Polecam każdemu w branży!”</p>
+                </div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <div class="card-bottom">
+                <div class="card-title">Tomasz W.</div>
+                <div class="card-subtitle">barber i trener</div>
+            </div>
+          </div>
+        </div>
+        <div class="card fade-in-item delay-5">
+          <div class="card-inner">
+            <div class="card-top">
+              <div class="card-media">
+                <div class="comentery">
+                  <p>“Barber Spot to miejsce, w którym poczułem się naprawdę zadbany. Profesjonalizm w każdym calu, a moja broda nigdy nie wyglądała lepiej! Polecam każdemu, kto chce wyglądać jak milion dolarów.”</p>
+                </div>
+                <div class="line"></div>
+              </div>
+            </div>
+            <div class="card-bottom">
+                <div class="card-title">Jan Kowalski</div>
+                <div class="card-subtitle">influencer lifestyle’owy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="inclusion-section">
+    <div class="metamorphosis-section">
+      <h2 class="metamorphosis-title-2">Twoja metamorfoza<br>zaczyna się <span class="gold">tutaj.</span></h2>
+    </div>
+  </section>
+
+  <section class="map-section" id="map-section">
+    <div class="cardexpanded">
+    <div class="card">
+      <div class="two-col">
+        <div class="left">
+          <div class="map-content-for-animate">
+          <h2>Gdzie nas znaleźć?</h2>
+          <p>Odwiedź nasz salon lub otwórz lokalizację w Google Maps, aby łatwiej do nas trafić.</p>
+          <div class="map-buttons">
+            <a href="#" class="map-button">
+              📍 Rozszerz
+            </a>
+            <a href="https://www.google.com/maps/place/Dziupla+Barbershop+%26+Barber+Krosno/@49.6963394,21.7800197,17z/data=!4m6!3m5!1s0x473c49de11e67aef:0x7b1ccc45aaf5743b!8m2!3d49.6977767!4d21.7819862!16s%2Fg%2F11jd_m_cgh?entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" class="map-button">
+              🗺️ Mapy Google
+            </a>
+          </div>
+          </div>
+        </div>
+        <div class="right">
+          <button class="collapse-button" style="opacity: 0; pointer-events: none;">📍 Zwiń</button>
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps?q=Korczyńska+23,+Krosno,+Polska&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="map-content-for-animate mobile">
+            <h2>Gdzie nas znaleźć?</h2>
+            <p>Odwiedź nasz salon lub otwórz lokalizację w Google Maps, aby łatwiej do nas trafić.</p>
+            <div class="map-buttons">
+              <a href="https://www.google.com/maps/place/Dziupla+Barbershop+%26+Barber+Krosno/@49.6963394,21.7800197,17z/data=!4m6!3m5!1s0x473c49de11e67aef:0x7b1ccc45aaf5743b!8m2!3d49.6977767!4d21.7819862!16s%2Fg%2F11jd_m_cgh?entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" class="map-button">🗺️ Otwórz w Mapach Google</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="footer-section" id="footer-section">
+    <div class="footer-wrapper">
+      <div class="footer-columns">
+        <div class="footer-links">
+          <p>O nas</p>
+          <p>Oferta</p>
+          <p>Szkolenia</p>
+          <p>Opinie</p>
+          <p>Znajdź Nas</p>
+          <p>Kontakt</p>
+        </div>
+        <div class="footer-address">
+          <p>BarberSpot</p>
+          <p>ul. Krosno</p>
+          <p>38–400 Krosno</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-note">GreenSite 2024</p>
+        <p class="footer-note"><a href="#">Manage Cookies</a></p>
+        <div class="footer-icons">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener" id="icon-instagram-footer"></a>
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener" id="icon-tiktok-footer"></a>
+          <a href="https://booksy.com" target="_blank" rel="noopener" id="icon-booksy-footer"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -171,9 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // JS navbar-section
 
-// --- Touch device detection constant (global scope) ---
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
 // JS slider-section & card-section
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -416,83 +413,6 @@ function initSliderSection() {
 }
 
 function initCardSection() {
-  // --- Simple animation helper for mobile ---
-  function runSimpleAnimation(media, frameList, cardNumber) {
-    const defaultDelays = [150, 250, 250, 250];
-    let total = 0;
-    for (let i = 0; i < frameList.length; i++) {
-      const delay = defaultDelays[i] !== undefined ? defaultDelays[i] : 350;
-      setTimeout(() => {
-        const nextImg = new Image();
-        const url = `./media/card-section/gif/mobile/${cardNumber}_${frameList[i]}m.webp`;
-        nextImg.src = url;
-        nextImg.decode().then(() => {
-          media.style.backgroundImage = `url('${url}')`;
-          media.style.backgroundPosition = 'top center';
-          media.style.backgroundSize = 'cover';
-          media.style.backgroundRepeat = 'no-repeat';
-        }).catch(() => {
-          media.style.backgroundImage = `url('${url}')`;
-          media.style.backgroundPosition = 'top center';
-          media.style.backgroundSize = 'cover';
-          media.style.backgroundRepeat = 'no-repeat';
-        });
-      }, total);
-      total += delay;
-    }
-  }
-
-  // --- Dedicated function for mobile card animation ---
-  function handleMobileCardAnimation(card) {
-    const media = card.querySelector('.card-media');
-    if (!media) return;
-
-    const framesForward = [0, 1, 2, 3, 4];
-    const framesBackward = [...framesForward].reverse();
-
-    const mainBtn = card.querySelector('.card-main-row .card-button');
-    const isExpanding = !card.classList.contains('expanded');
-    // Find index of card for overlay
-    const allCards = Array.from(document.querySelectorAll('.card-section .card'));
-    const index = allCards.indexOf(card);
-    if (isExpanding) {
-      card.classList.add('expanded');
-      card.classList.add('no-hover');
-      media.style.backgroundImage = `url('./media/card-section/gif/mobile/${index + 1}_0m.webp')`;
-      media.style.backgroundPosition = 'top center';
-      media.style.backgroundSize = 'cover';
-      media.style.backgroundRepeat = 'no-repeat';
-      runSimpleAnimation(media, framesForward, index + 1);
-      if (mainBtn) {
-        mainBtn.textContent = 'mniej';
-        mainBtn.style.backgroundColor = 'transparent';
-        mainBtn.style.border = '1px solid var(--neutral-white)';
-        mainBtn.style.color = 'white';
-      }
-      if (overlayImgs[index]) {
-        overlayImgs[index].src = `./media/card-section/gif/${index + 1}_3.png`;
-        overlayImgs[index].style.objectPosition = 'top';
-      }
-    } else {
-      card.classList.remove('expanded');
-      card.classList.remove('no-hover');
-      media.style.backgroundImage = `url('./media/card-section/gif/mobile/${index + 1}_4m.webp')`;
-      media.style.backgroundPosition = 'top center';
-      media.style.backgroundSize = 'cover';
-      media.style.backgroundRepeat = 'no-repeat';
-      runSimpleAnimation(media, framesBackward, index + 1);
-      if (mainBtn) {
-        mainBtn.textContent = 'więcej';
-        mainBtn.style.backgroundColor = 'var(--neutral-white)';
-        mainBtn.style.border = 'none';
-        mainBtn.style.color = 'black';
-      }
-      if (overlayImgs[index]) {
-        overlayImgs[index].src = `./media/card-section/gif/${index + 1}_1.png`;
-        overlayImgs[index].style.objectPosition = 'center';
-      }
-    }
-  }
   const root = document.querySelector(".card-section");
   if (!root) return;
 
@@ -506,6 +426,8 @@ function initCardSection() {
   const container = root.querySelector(".card-container");
   const maxIndex = cards.length - 3;
   let currentIndex = 0;
+
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
   if (isTouchDevice) {
     root.querySelectorAll('.cs-arrow').forEach(arrow => {
@@ -577,34 +499,28 @@ function initCardSection() {
     const media = card.querySelector('.card-media');
     const cardIndex = index + 1; // Zakładamy pliki 1.webp, 1r.webp itd.
 
-    // Overlay image setup - use overlayWrapper inside .card-media
-    const overlayWrapper = document.createElement('div');
-    overlayWrapper.className = 'overlay-wrapper';
-    overlayWrapper.style.position = 'absolute';
-    overlayWrapper.style.top = '0';
-    overlayWrapper.style.left = '0';
-    overlayWrapper.style.width = '100%';
-    overlayWrapper.style.height = '100%';
-    overlayWrapper.style.pointerEvents = 'none';
-    overlayWrapper.style.display = 'flex';
-    overlayWrapper.style.alignItems = 'center';
-    overlayWrapper.style.justifyContent = 'center';
-    overlayWrapper.style.zIndex = '2';
-
-    const overlayImg = document.createElement('img');
-    overlayImg.className = 'card-overlay';
+    // Upewnij się, że overlayImg jest dodane tylko do .card-media
+    let overlayImg = media.querySelector('.card-overlay');
+    if (!overlayImg) {
+      overlayImg = document.createElement('img');
+      overlayImg.className = 'card-overlay';
+      media.appendChild(overlayImg);
+    }
     overlayImg.src = `./media/card-section/gif/${cardIndex}_1.png`;
-    overlayImg.style.objectFit = 'cover';
-    overlayImg.style.objectPosition = 'center';
-    overlayImg.style.width = '100%';
+    overlayImg.style.objectPosition = 'bottom';
+    overlayImg.style.position = 'absolute';
+    overlayImg.style.top = '0';
+    // Center overlay horizontally
+    overlayImg.style.left = '50%';
+    overlayImg.style.transform = 'translateX(-50%)';
+    overlayImg.style.width = 'auto';
     overlayImg.style.height = '100%';
-
-    overlayWrapper.appendChild(overlayImg);
-    media.appendChild(overlayWrapper);
+    overlayImg.style.objectFit = 'contain';
+    overlayImg.style.pointerEvents = 'none';
+    overlayImg.style.zIndex = '2';
     overlayImgs[index] = overlayImg;
 
     card.addEventListener('mouseenter', () => {
-      if (isTouchDevice) return;
       if (!card.classList.contains('expanded') && !card.classList.contains('no-hover')) {
         if (isSafari) {
           media.style.backgroundImage = "none";
@@ -624,7 +540,6 @@ function initCardSection() {
     });
 
     card.addEventListener('mouseleave', () => {
-      if (isTouchDevice) return;
       if (!card.classList.contains('expanded') && !card.classList.contains('no-hover')) {
         if (isSafari) {
           media.style.backgroundImage = "none";
@@ -644,17 +559,10 @@ function initCardSection() {
     });
   });
 
-
   root.querySelectorAll('.card-button').forEach((button, btnIdx) => {
     button.addEventListener('click', (e) => {
       const card = e.target.closest('.card');
       if (!card) return;
-
-      // Only execute mobile path on true touch devices, and prevent desktop logic from running in parallel
-      if (isTouchDevice) {
-        handleMobileCardAnimation(card);
-        return;
-      }
 
       card.classList.toggle('expanded');
       const media = card.querySelector('.card-media');
@@ -662,45 +570,43 @@ function initCardSection() {
       const allCards = Array.from(root.querySelectorAll('.card'));
       const index = allCards.indexOf(card);
       // Obsługa Safari i innych przeglądarek
-      if (!isTouchDevice) {
-        if (card.classList.contains('expanded')) {
-          media.style.backgroundColor = 'black';
-          if (isSafari) {
-            media.style.backgroundImage = "none";
-            setTimeout(() => {
-              media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}ex.webp')`;
-              media.style.backgroundSize = 'cover';
-              media.style.backgroundPosition = 'top';
-            }, 1);
-          } else {
-            media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}ex.webp?${Date.now()}')`;
+      if (card.classList.contains('expanded')) {
+        media.style.backgroundColor = 'black';
+        if (isSafari) {
+          media.style.backgroundImage = "none";
+          setTimeout(() => {
+            media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}ex.webp')`;
             media.style.backgroundSize = 'cover';
             media.style.backgroundPosition = 'top';
-          }
-          // Overlay change for expanded
-          if (overlayImgs[index]) {
-            overlayImgs[index].src = `./media/card-section/gif/${index + 1}_3.png`;
-            overlayImgs[index].style.objectPosition = 'top';
-          }
+          }, 1);
         } else {
-          media.style.backgroundColor = '';
-          if (isSafari) {
-            media.style.backgroundImage = "none";
-            setTimeout(() => {
-              media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}rex.webp')`;
-              media.style.backgroundSize = 'cover';
-              media.style.backgroundPosition = 'center';
-            }, 1);
-          } else {
-            media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}rex.webp?${Date.now()}')`;
+          media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}ex.webp?${Date.now()}')`;
+          media.style.backgroundSize = 'cover';
+          media.style.backgroundPosition = 'top';
+        }
+        // Overlay change for expanded
+        if (overlayImgs[index]) {
+          overlayImgs[index].src = `./media/card-section/gif/${index + 1}_3.png`;
+          overlayImgs[index].style.objectPosition = 'top';
+        }
+      } else {
+        media.style.backgroundColor = '';
+        if (isSafari) {
+          media.style.backgroundImage = "none";
+          setTimeout(() => {
+            media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}rex.webp')`;
             media.style.backgroundSize = 'cover';
             media.style.backgroundPosition = 'center';
-          }
-          // Overlay revert for collapsed
-          if (overlayImgs[index]) {
-            overlayImgs[index].src = `./media/card-section/gif/${index + 1}_1.png`;
-            overlayImgs[index].style.objectPosition = 'center';
-          }
+          }, 1);
+        } else {
+          media.style.backgroundImage = `url('./media/card-section/gif/${index + 1}rex.webp?${Date.now()}')`;
+          media.style.backgroundSize = 'cover';
+          media.style.backgroundPosition = 'center';
+        }
+        // Overlay revert for collapsed
+        if (overlayImgs[index]) {
+          overlayImgs[index].src = `./media/card-section/gif/${index + 1}_1.png`;
+          overlayImgs[index].style.objectPosition = 'center';
         }
       }
       // Toggle no-hover for expanded/normal
