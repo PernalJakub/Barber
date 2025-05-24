@@ -481,10 +481,10 @@ function initCardSection() {
       media.style.backgroundRepeat = 'no-repeat';
       runSimpleAnimation(media, framesForward, index + 1);
       if (mainBtn) {
-        mainBtn.textContent = 'mniej';
-        mainBtn.style.backgroundColor = 'transparent';
-        mainBtn.style.border = '1px solid var(--neutral-white)';
-        mainBtn.style.color = 'white';
+        mainBtn.classList.remove('white');
+        mainBtn.classList.add('expanded');
+        mainBtn.innerHTML = '<div class="icon-button-narrowup"></div> mniej';
+        loadGlobalSVGIcons();
       }
       if (overlayImgs[index]) {
         overlayImgs[index].src = `./media/card-section/gif/${index + 1}_3.png`;
@@ -499,10 +499,10 @@ function initCardSection() {
       media.style.backgroundRepeat = 'no-repeat';
       runSimpleAnimation(media, framesBackward, index + 1);
       if (mainBtn) {
-        mainBtn.textContent = 'więcej';
-        mainBtn.style.backgroundColor = 'var(--neutral-white)';
-        mainBtn.style.border = 'none';
-        mainBtn.style.color = 'black';
+        mainBtn.classList.remove('expanded');
+        mainBtn.classList.add('white');
+        mainBtn.innerHTML = '<div class="icon-button-narrowdown"></div> więcej';
+        loadGlobalSVGIcons();
       }
       if (overlayImgs[index]) {
         overlayImgs[index].src = `./media/card-section/gif/${index + 1}_1.png`;
@@ -731,15 +731,15 @@ function initCardSection() {
 
       const mainBtn = card.querySelector('.card-main-row .card-button');
       if (mainBtn && mainBtn.textContent.trim() === 'więcej') {
-        mainBtn.textContent = 'mniej';
-        mainBtn.style.backgroundColor = 'transparent';
-        mainBtn.style.border = '1px solid var(--neutral-white)';
-        mainBtn.style.color = 'white';
+        mainBtn.classList.remove('white');
+        mainBtn.classList.add('expanded');
+        mainBtn.innerHTML = '<div class="icon-button-narrowdown"></div> mniej';
+        loadGlobalSVGIcons();
       } else if (mainBtn) {
-        mainBtn.textContent = 'więcej';
-        mainBtn.style.backgroundColor = 'var(--neutral-white)';
-        mainBtn.style.border = 'none';
-        mainBtn.style.color = 'black';
+        mainBtn.classList.remove('expanded');
+        mainBtn.classList.add('white');
+        mainBtn.innerHTML = '<div class="icon-button-narrowup"></div> więcej';
+        loadGlobalSVGIcons();
       }
     });
   });

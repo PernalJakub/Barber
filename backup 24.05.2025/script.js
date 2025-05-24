@@ -4,57 +4,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadGlobalSVGIcons() {
   const icons = [
-    { id: "icon-logo", path: "./media/icons/logo.svg" },
-    { id: "icon-facebook", path: "./media/icons/facebook.svg" },
-    { id: "icon-instagram", path: "./media/icons/instagram.svg" },
-    { id: "icon-tiktok", path: "./media/icons/tiktok.svg" },
-    { id: "icon-booksy", path: "./media/icons/booksy.svg" },
+    { class: "icon-logo", path: "./media/icons/logo.svg" },
+    { class: "icon-facebook", path: "./media/icons/facebook.svg" },
+    { class: "icon-instagram", path: "./media/icons/instagram.svg" },
+    { class: "icon-tiktok", path: "./media/icons/tiktok.svg" },
+    { class: "icon-booksy", path: "./media/icons/booksy.svg" },
 
     // Mobile versions
-    { id: "icon-facebook-mobile", path: "./media/icons/facebook.svg" },
-    { id: "icon-instagram-mobile", path: "./media/icons/instagram.svg" },
-    { id: "icon-tiktok-mobile", path: "./media/icons/tiktok.svg" },
-    { id: "icon-booksy-mobile", path: "./media/icons/booksy.svg" },
+    { class: "icon-facebook-mobile", path: "./media/icons/facebook.svg" },
+    { class: "icon-instagram-mobile", path: "./media/icons/instagram.svg" },
+    { class: "icon-tiktok-mobile", path: "./media/icons/tiktok.svg" },
+    { class: "icon-booksy-mobile", path: "./media/icons/booksy.svg" },
 
     // Footer (white version) icons
-    { id: "icon-facebook-footer", path: "./media/icons/facebook.svg" },
-    { id: "icon-instagram-footer", path: "./media/icons/instagram.svg" },
-    { id: "icon-tiktok-footer", path: "./media/icons/tiktok.svg" },
-    { id: "icon-booksy-footer", path: "./media/icons/booksy.svg" },
+    { class: "icon-facebook-footer", path: "./media/icons/facebook.svg" },
+    { class: "icon-instagram-footer", path: "./media/icons/instagram.svg" },
+    { class: "icon-tiktok-footer", path: "./media/icons/tiktok.svg" },
+    { class: "icon-booksy-footer", path: "./media/icons/booksy.svg" },
 
     // Card-section (white version) icons
-    { id: "icon-facebook-card", path: "./media/icons/facebook.svg" },
-    { id: "icon-instagram-card", path: "./media/icons/instagram.svg" },
-    { id: "icon-tiktok-card", path: "./media/icons/tiktok.svg" },
-    { id: "icon-booksy-card", path: "./media/icons/booksy.svg" }
+    { class: "icon-facebook-card", path: "./media/icons/facebook.svg" },
+    { class: "icon-instagram-card", path: "./media/icons/instagram.svg" },
+    { class: "icon-tiktok-card", path: "./media/icons/tiktok.svg" },
+    { class: "icon-booksy-card", path: "./media/icons/booksy.svg" },
+
+    // Button
+    { class: "icon-facebook-button", path: "./media/icons/facebook.svg" },
+    { class: "icon-instagram-button", path: "./media/icons/instagram.svg" },
+    { class: "icon-tiktok-button", path: "./media/icons/tiktok.svg" },
+    { class: "icon-booksy-button", path: "./media/icons/booksy.svg" },
+    { class: "icon-button-narrowup", path: "./media/icons/narrowup.svg" },
+    { class: "icon-button-narrowdown", path: "./media/icons/narrowdown.svg" }
   ];
 
   icons.forEach(icon => {
     fetch(icon.path)
       .then(response => response.text())
       .then(data => {
-        const container = document.getElementById(icon.id);
-        if (container) {
+        const containers = document.querySelectorAll(`.${icon.class}`);
+        containers.forEach(container => {
           container.innerHTML = data;
           const svg = container.querySelector('svg');
           if (svg) {
             svg.classList.add('global-icon-svg');
             svg.setAttribute('fill', 'currentColor');
-            // Dodaj klasę białą tylko dla footerowych ikon
             if (
-              icon.id === "icon-facebook-footer" ||
-              icon.id === "icon-instagram-footer" ||
-              icon.id === "icon-tiktok-footer" ||
-              icon.id === "icon-booksy-footer" ||
-              icon.id === "icon-facebook-card" ||
-              icon.id === "icon-instagram-card" ||
-              icon.id === "icon-tiktok-card" ||
-              icon.id === "icon-booksy-card"
+              icon.class.includes("footer") ||
+              icon.class.includes("card")
             ) {
               svg.classList.add('footer-icon-white');
             }
+             if (
+              icon.class.includes("button")
+            ) {
+              svg.classList.remove('global-icon-svg')
+              svg.classList.add('global-icon-svg-button');
+            }
           }
-        }
+        });
       });
   });
 }
