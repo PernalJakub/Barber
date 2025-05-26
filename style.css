@@ -404,10 +404,14 @@
 .navbar-section .mobile-nav-center .highlighted {
       background-color: var(--tertiary-light) !important;
       box-shadow: inset 0 0 12px var(--tertiary-very-light) !important;
-      border-radius: 12px;
+      border-radius: 24px;
+      padding: 0.6rem;
       position: relative;
       overflow: hidden;
 }
+  .navbar-section .mobile-nav-center .nav-link.highlighted {
+    padding: 0.75rem 1.2rem;
+  } 
 
 .navbar-section .navbar-center .highlighted::after,
 .navbar-section .mobile-nav-center .highlighted::after {
@@ -753,8 +757,8 @@
     font-size: var(--label-large);
     font-weight: 500;
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
+    padding: 0.75rem 1.2rem;
+    border-radius: 24px;
     transition: background-color 0.3s;
   }
 
@@ -768,7 +772,7 @@
   justify-content: center;
   align-items: center;
   width: 200px;
-  height: 40px;
+  height: 42px;
   background-color: var(--neutral-black);
   color: var(--neutral-white);
   font-size: var(--line-height-title-medium);
@@ -1536,6 +1540,26 @@ animation-play-state: paused;
   .card-section .card-media {
     transition: background-image 0.6s ease, transform 0.6s ease, background-color 0.6s ease;
   }
+
+  .card-section .card-button.white {
+  background-color: var(--neutral-white) !important;
+  color: var(--neutral-black) !important;
+  border: none !important;
+}
+
+.card-section .card-button.expanded {
+  background-color: transparent !important;
+  border: 1px solid var(--neutral-white) !important;
+  color: var(--neutral-white) !important;
+}
+
+.icon-button-narrowdown {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   
   
   /* CSS card-section */
@@ -2573,7 +2597,8 @@ animation-play-state: paused;
     font-weight: 500;
     text-decoration: none;
     padding: 0.75rem 1.5rem;
-    border-radius: 8px;
+    border-radius: 24px;
+    gap: 2px;
     transition: background-color 0.3s;
     }
     
@@ -2638,8 +2663,8 @@ animation-play-state: paused;
       font-size: var(--label-large);
       font-weight: 500;
       text-decoration: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      padding: 0.75rem 1.2rem;
+      border-radius: 24px;
       transition: background-color 0.3s;
     }
     
@@ -2652,12 +2677,12 @@ animation-play-state: paused;
           position: absolute;
           top: 20px;
           right: 20px;
-          padding: 0.75rem 1.5rem;
+          padding: 0.75rem 1.2rem;
           font-size: var(--label-large);
           background-color: var(--neutral-white);
           color: var(--neutral-black);
           border: none;
-          border-radius: 8px;
+          border-radius: 24px;
           cursor: pointer;
           z-index: 20;
           opacity: 0;
@@ -2854,23 +2879,3 @@ animation-play-state: paused;
 
 /* Place .white and .expanded below .card-button to ensure override */
 
-.card-section .card-button.white {
-  background-color: var(--neutral-white) !important;
-  color: var(--neutral-black) !important;
-  border: none !important;
-}
-
-.card-section .card-button.expanded {
-  background-color: transparent !important;
-  border: 1px solid var(--neutral-white) !important;
-  color: var(--neutral-white) !important;
-}
-
-
-.icon-button-narrowdown {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
