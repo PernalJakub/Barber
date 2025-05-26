@@ -2865,3 +2865,12 @@ animation-play-state: paused;
   border: 1px solid var(--neutral-white) !important;
   color: var(--neutral-white) !important;
 }
+
+
+.icon-button-narrowdown {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
