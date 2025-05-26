@@ -501,7 +501,7 @@ function initCardSection() {
       if (mainBtn) {
         mainBtn.classList.remove('expanded');
         mainBtn.classList.add('white');
-        mainBtn.innerHTML = '<div class="icon-button-narrowdown"></div> więcej';
+        mainBtn.innerHTML = '<div class="icon-button-narrowup"></div> więcej';
         loadGlobalSVGIcons();
       }
       if (overlayImgs[index]) {
