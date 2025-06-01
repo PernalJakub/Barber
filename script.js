@@ -34,7 +34,9 @@ function loadGlobalSVGIcons() {
     { class: "icon-tiktok-button", path: "./media/icons/tiktok.svg" },
     { class: "icon-booksy-button", path: "./media/icons/booksy.svg" },
     { class: "icon-button-narrowup", path: "./media/icons/narrowup.svg" },
-    { class: "icon-button-narrowdown", path: "./media/icons/narrowdown.svg" }
+    { class: "icon-button-narrowdown", path: "./media/icons/narrowdown.svg" },
+    { class: "icon-button-google-maps", path: "./media/icons/google-maps.svg" },
+    { class: "icon-button-lesson", path: "./media/icons/lesson.svg" }
   ];
 
   icons.forEach(icon => {
