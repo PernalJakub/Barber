@@ -899,8 +899,13 @@
 @media (min-width: 600px) {
 
   .slider-section .two-col .left {
-    width: 40%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     padding-left: 10%;
+    padding-right: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -922,11 +927,14 @@
   @media (min-width: 600px) {
 
     .slider-section .two-col .right {
-    width: 60%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
-    padding: 2rem;
   }
 
   .slider-section .two-col img {
@@ -1012,6 +1020,32 @@
   .slider-section .card.bg2 { background: var(--tertiary-light); }
   .slider-section .card.bg3 { background: var(--tertiary-light); }
   .slider-section .card.bg4 { background: var(--tertiary-light); }
+
+  .slider-section .bg2 .two-col .left {
+    color: var(--neutral-white);
+    background: linear-gradient(
+                100deg,
+                #000000 35%,
+                #000000ad 45%,
+                rgba(0, 0, 0, 0) 100%
+            );
+ }
+
+ .slider-section .bg2 .two-col .right {
+  z-index: -10;
+  /* right: -10px; */
+ }
+
+ .slider-section .bg2 .two-col .right img {
+  height: 100%;
+  display: block;
+  right: 0;
+  /* margin-left: auto;
+  margin-right: auto; */
+  object-fit: cover;
+  object-position: right;
+  z-index: -10;
+ }
 
   .slider-section .arrow.left span {
     display: inline-block;
