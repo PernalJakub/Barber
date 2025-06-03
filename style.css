@@ -891,7 +891,7 @@
       padding-bottom: 1rem;
       padding-left: 10%;
       padding-right: 10%;
-      padding-top: 50%;
+      padding-top: 70%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1036,9 +1036,9 @@
  @media (max-width: 599px) {
   .slider-section .bg2 .two-col .left {
         background: linear-gradient(
-                0deg,
+                -2deg,
                 #000000 20%,
-                #000000ad 33%,
+                #000000ad 30%,
                 rgba(0, 0, 0, 0) 100%
             );
   }
