@@ -242,7 +242,7 @@
 
   body {
     margin: 0;
-    background: var(--tertiary-very-light);
+    background: var(--tertiary-base);
     font-family: var(--font-rest);
     color: #333;
     overflow-x: hidden;
@@ -279,6 +279,7 @@
 
   .gold {
     color: var(--primary-base);
+    text-shadow: 0 0 12px rgba(206, 179, 124, 0.6);
   }
 
   html {
@@ -346,7 +347,7 @@
       justify-content: space-between;
       height: 65px;
       position: fixed;
-      background-color: #e8e8e8c0;
+      background-color: var(--tertiary-base);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       top: 0;
@@ -359,6 +360,7 @@
       transition: transform 1s ease, opacity 1s ease;
       will-change: transform, opacity;
       backface-visibility: hidden;
+      color: var(--neutral-extra-light);
     }
 
     .navbar-section .navbar-left {
@@ -402,8 +404,8 @@
 
 .navbar-section .navbar-center .highlighted,
 .navbar-section .mobile-nav-center .highlighted {
-      background-color: var(--tertiary-light) !important;
-      box-shadow: inset 0 0 12px var(--tertiary-very-light) !important;
+      background-color: var(--neutral-black) !important;
+      box-shadow: inset 0 0 12px var(--neutral-dark) !important;
       border-radius: 24px;
       padding: 0.6rem;
       position: relative;
@@ -443,7 +445,7 @@
 
     .navbar-section .navbar-right a,
     .navbar-section .mobile-nav-right a{
-      color: var(--neutral-black);
+      color: var(--neutral-extra-light);
     }
 
     .navbar-section .navbar-right .social-icon {
@@ -1019,12 +1021,13 @@
     border: 1px solid #444;
   }
 
-  .slider-section .card.bg1 { background: var(--tertiary-light); }
+  .slider-section .card.bg1 { background: #0000003d; color: var(--neutral-white); }
   .slider-section .card.bg2 { background: var(--tertiary-light); }
   .slider-section .card.bg3 { background: var(--tertiary-light); }
   .slider-section .card.bg4 { background: var(--tertiary-light); }
 
-  .slider-section .bg2 .two-col .left {
+  .slider-section .bg2 .two-col .left,
+  .slider-section .bg3 .two-col .left {
     color: var(--neutral-white);
     background: linear-gradient(
                 100deg,
@@ -1034,7 +1037,8 @@
             );
  }
  @media (max-width: 599px) {
-  .slider-section .bg2 .two-col .left {
+  .slider-section .bg2 .two-col .left,
+  .slider-section .bg3 .two-col .left {
         background: linear-gradient(
                 -2deg,
                 #000000 20%,
@@ -1044,12 +1048,14 @@
   }
  }
 
- .slider-section .bg2 .two-col .right {
+ .slider-section .bg2 .two-col .right,
+ .slider-section .bg3 .two-col .right  {
   z-index: -10;
   /* right: -10px; */
  }
 
- .slider-section .bg2 .two-col .right img {
+ .slider-section .bg2 .two-col .right img,
+ .slider-section .bg3 .two-col .right img {
   height: 100%;
   display: block;
   right: 0;
@@ -1291,6 +1297,23 @@ transition-delay: 0.25s;
   align-items: center;
 }
 
+.slider-section .video-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slider-section .video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
 
 /* CSS slider-section */
 
