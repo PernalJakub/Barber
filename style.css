@@ -1128,8 +1128,8 @@
   .slider-section .intro-overlay {
     position: absolute;
     inset: 0;
-    background-color: var(--neutral-dark);
-    color: var(--neutral-light);
+    background-color: var(--neutral-very-dark);
+    color: var(--neutral-extra-light);
     display: flex;
     align-items: center;
     justify-content: center;
