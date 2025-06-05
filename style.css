@@ -284,8 +284,8 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
     display: inline-block;
-    text-shadow: 0 0 8px rgba(206, 179, 124, 0.6);
-  }
+    }
+  
 
   html {
     scrollbar-width: none; /* Firefox */
