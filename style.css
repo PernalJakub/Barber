@@ -1726,6 +1726,7 @@ animation-play-state: paused;
 
   .metamorphosis-title {
     font-size: var(--display-medium);
+    color: var(--neutral-very-light);
     text-align: center;
     opacity: 0;
     transform: translateY(15px);
