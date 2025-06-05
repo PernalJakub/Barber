@@ -1226,7 +1226,7 @@
   }
 
   @keyframes typing1 {
-    to { width: 384px; }
+    to { width: 363px; }
   }
 
   @media (max-width: 991px) {
@@ -1731,6 +1731,10 @@ animation-play-state: paused;
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  .metamorphosis-title-2 {
+    color: var(--neutral-very-light);
   }
 
   @media (max-width: 599px) {
@@ -2320,7 +2324,7 @@ animation-play-state: paused;
   }
 
   .content-section-1 .two-col .left {
-    height: 40%;
+    height: 45%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -2331,6 +2335,16 @@ animation-play-state: paused;
     -webkit-backdrop-filter: blur(10px);
     background-color: rgba(48, 54, 53, 0.2);
     border: 1.5px solid var(--primary-base);
+  }
+  .content-section-1 .two-col .left h2 {
+    font-size: var(--display-medium);
+    line-height: var(--line-height-display-medium);
+    margin-bottom: var(--space-xs);
+  }
+  .content-section-1 .two-col .left p {
+    font-size: var(--body-large);
+    line-height: var(--line-height-body-large);
+    margin-bottom: var(--space-xs);
   }
 }
 
@@ -2381,6 +2395,9 @@ animation-play-state: paused;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  color: var(--neutral-extra-light);
+  padding: 0 40px;
   opacity: 0;
   transform: translateY(15px);
   transition: opacity 1s ease-out, transform 1s ease-out;
@@ -2412,6 +2429,7 @@ animation-play-state: paused;
   position: relative;
   padding-left: 20px;
   padding-right: 20px;
+  color: var(--neutral-extra-light)
 }
 
 .card-section-2 .container-label h3 {
@@ -2459,7 +2477,7 @@ animation-play-state: paused;
   width: 32px;
   height: 26px;
   font-size: 2rem;
-  color: var(--neutral-black);
+  color: var(--neutral--extra-light);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -2778,6 +2796,7 @@ animation-play-state: paused;
     transform: translateY(15px);
     transition: opacity 1s ease-out, transform 1s ease-out;
     padding: 20px 20px;
+    color: var(--neutral-extra-light);
     }
     
     .map-section .map-content-for-animate.content-animate-in {
