@@ -2377,14 +2377,23 @@ animation-play-state: paused;
   }
 
   .content-section-1 .two-col .right {
-    height: 50%;
-    width: 100%;
+    position: absolute;
+    height: 70%;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--neutral-black);
+    /* background-color: var(--neutral-black); */
     border-radius: 2px;
     box-shadow: inset 0 -8px 16px rgba(0, 0, 0, 1),
+  }
+
+  .content-section-1.two-col .right img {
+    position: absolute;
+    height: 80%;
+    top: 0;
+    z-index: -1;
+    object-fit: contain;
   }
 
   .content-section-1 .two-col .left {
