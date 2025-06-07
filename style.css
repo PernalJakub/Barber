@@ -2399,6 +2399,8 @@ animation-play-state: paused;
     -webkit-backdrop-filter: blur(10px);
     background-color: rgba(48, 54, 53, 0.2);
     border: 1.5px solid var(--primary-base);
+    border-radius: 24px;
+    z-index: 10;
   }
   .content-section-1 .two-col .left h2 {
     font-size: var(--display-medium);
@@ -2814,7 +2816,6 @@ animation-play-state: paused;
     height: 594px;
     width: 1147px; 
     border: 1.5px solid var(--primary-base);
-    border-radius: 6px;
     /* backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); */
     overflow: hidden;
@@ -2862,8 +2863,6 @@ animation-play-state: paused;
     transition: opacity 1s ease-out, transform 1s ease-out;
     padding: 20px 20px;
     color: var(--neutral-extra-light);
-    border-radius: 24px;
-    z-index: 10;
     }
     
     .map-section .map-content-for-animate.content-animate-in {
@@ -2913,6 +2912,7 @@ animation-play-state: paused;
     -webkit-backdrop-filter: blur(10px);
     background-color: rgba(48, 54, 53, 0.2);
     transition: width 1s ease;
+
     }
     
     .map-section .two-col .left.hidden {
@@ -3094,7 +3094,8 @@ animation-play-state: paused;
         -webkit-backdrop-filter: blur(10px);
         background-color: rgba(48, 54, 53, 0.2);
         border: 1.5px solid var(--primary-base);
-        border-radius: 6px;
+        border-radius: 24px;
+        z-index: 10;
       }
 
       /* Animacje wejścia dla .map-content-for-animate.mobile */
