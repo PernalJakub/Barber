@@ -714,7 +714,6 @@
     height: 620px;
     width: 90vw;
     max-width: 1500px;
-    background: white;
     border-radius: 12px;
     box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.25);
     position: relative;
@@ -731,7 +730,8 @@
   
   @media (max-width: 599px) {
     .slider-section .card {
-      height: 450px;
+      height: 500px;
+      border-radius: 24px;
     }
   }
 
@@ -1035,9 +1035,9 @@
   }
 
   .slider-section .card.bg1 { background: #00000083; color: var(--neutral-white); }
-  .slider-section .card.bg2 { background: var(--tertiary-light); }
-  .slider-section .card.bg3 { background: var(--tertiary-light); }
-  .slider-section .card.bg4 { background: var(--tertiary-light); }
+  .slider-section .card.bg2 { background: var(--tertiary-base); }
+  /* .slider-section .card.bg3 { background: var(--tertiary-base); } */
+  .slider-section .card.bg4 { background: #00000083; color: var(--neutral-white); }
 
   .slider-section .bg2 .two-col .left,
   .slider-section .bg3 .two-col .left {
@@ -1327,6 +1327,67 @@ transition-delay: 0.25s;
   object-fit: cover;
   z-index: -1;
 }
+
+.card.bg4 {
+  position: relative;
+  overflow: hidden;
+}
+
+.card.bg4 .image-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+  .card.bg4 .overlay {
+    position: absolute;
+    inset: 0;
+    background: #0000004e; /* półprzezroczyste przyciemnienie */
+    z-index: 1;
+  }
+
+.card.bg4 > div,
+.card.bg4 .buttons,
+.card.bg4 .arrow {
+  /* position: relative; */
+  z-index: 1;
+}
+
+.card.bg4 .card-map-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-map-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--neutral-white);
+      color: var(--neutral-black);
+      font-size: var(--label-large);
+      font-weight: 500;
+      text-decoration: none;
+      height: 46px;
+      width: 150px;
+      border-radius: 24px;
+      transition: color 0.6s, background-color 0.6s, border 0.6s;
+    }
+  
+    .card.bg4 .card-dark-button {
+      background-color: var(--neutral-black);
+      color: var(--neutral-white);
+      width: 150px;
+    }
+
+    .card.bg4 .card-dark-button:hover {
+      background-color: var(--neutral-dark);
+      color: var(--neutral-white);
+    }
 
 /* CSS slider-section */
 
@@ -1898,7 +1959,7 @@ animation-play-state: paused;
     }
 
     .animated-section-1 .animated-container {
-      height: 400px;
+      height: 420px;
     }
 
     .animated-section-1 .service-title {
@@ -2127,22 +2188,22 @@ animation-play-state: paused;
 
 @media (max-width: 599px) {
   .animated-section-2 {
-    height: 162px;
+    height: 220px;
   }
 
   .animated-section-2 .animated-container {
-    height: 125px;
+    height: 190px;
   }
 
   .animated-section-2 .rotated-wrapper {
-    gap: 25px;
+    gap: 30px;
     padding-left: 12.5px;
     padding-right: 12.5px;
   }
 
   .animated-section-2 .rotated-wrapper .icon-svg {
-    width: 63px;
-    height: 63px;
+    width: 90px;
+    height: 90px;
   }
 }
 
@@ -2781,6 +2842,7 @@ animation-play-state: paused;
       height: 508px;
       width: 100%;
       border: 0px;
+      border-radius: 24px;
     }
     }
     
@@ -2800,6 +2862,8 @@ animation-play-state: paused;
     transition: opacity 1s ease-out, transform 1s ease-out;
     padding: 20px 20px;
     color: var(--neutral-extra-light);
+    border-radius: 24px;
+    z-index: 10;
     }
     
     .map-section .map-content-for-animate.content-animate-in {
@@ -2972,8 +3036,8 @@ animation-play-state: paused;
     
         .collapse-button {
           position: absolute;
-          top: 20px;
-          right: 20px;
+          top: 10px;
+          right: 70px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -3007,7 +3071,7 @@ animation-play-state: paused;
       .map-section .two-col .right{
         width: 100%;
         height: 100%;
-        background-image: url("./media/map-section/1.png");
+        background-image: url("./media/map-section/barber-krosno-mapa.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
