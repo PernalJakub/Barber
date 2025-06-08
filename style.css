@@ -1343,12 +1343,12 @@ transition-delay: 0.25s;
   background-repeat: no-repeat;
 }
 
-  .card.bg4 .overlay {
+  /* .card.bg4 .overlay {
     position: absolute;
     inset: 0;
-    background: #0000004e; /* półprzezroczyste przyciemnienie */
+    background: #0000004e;
     z-index: 1;
-  }
+  } */
 
 /* .card.bg4 .center {
   z-index: 2;
