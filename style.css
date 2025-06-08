@@ -1350,9 +1350,9 @@ transition-delay: 0.25s;
     z-index: 1;
   }
 
-.card.bg4 .center {
+/* .card.bg4 .center {
   z-index: 2;
-}
+} */
 
 .card.bg4 > div,
 .card.bg4 .buttons,
