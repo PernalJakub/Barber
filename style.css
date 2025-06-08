@@ -1350,6 +1350,10 @@ transition-delay: 0.25s;
     z-index: 1;
   }
 
+.card.bg4 .center {
+  z-index: 2;
+}
+
 .card.bg4 > div,
 .card.bg4 .buttons,
 .card.bg4 .arrow {
@@ -1361,7 +1365,6 @@ transition-delay: 0.25s;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
 }
 
 .card-map-button {
