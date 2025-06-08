@@ -1157,30 +1157,35 @@
   .slider-section .intro-logo-wrap {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
-    min-width: 500px;
-    min-height: 120px;
   }
 
   .slider-section .intro-logo-wrap h2{
+    font-size: var(--display-medium) !important;
+    font-weight: 700;
+    color: var(--neutral-light);
+    white-space: nowrap;
+    opacity: 0;
+    animation: introon 1s forwards;
     margin: 0;
   }
-
+  
   .slider-section .logo-square {
     width: 100px;
     height: 100px;
-    min-width: 100px;
-    min-height: 100px;
     background-color: var(--neutral-light);
     border-radius: 12px;
-    flex-shrink: 0;
+    margin: 0;
+    opacity: 0;
+    animation: introon 1s forwards;
   }
 
-  @media (max-width: 991px) {
+  /* @media (max-width: 991px) {
     .slider-section .logo-square {
       margin-left: 40px;
     }
-  }
+  } */
 
   @media (max-width: 599px) {
     .slider-section .intro-logo-wrap {
@@ -1189,50 +1194,27 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    min-width: 400px;
-    min-height: 120px;
 
-  }
-
-  .slider-section .intro-logo-wrap h2{
-    margin: 0;
   }
 
   .slider-section .logo-square {
     width: 100px;
     height: 100px;
-    min-width: 100px;
-    min-height: 100px;
     background-color: var(--neutral-light);
     border-radius: 12px;
     flex-shrink: 0;
     margin: 0;
+    opacity: 0;
+    animation: introon 1s forwards;
     }
   }
 
-  .slider-section .typing-text {
-    overflow: hidden; 
-    white-space: nowrap;
-    display: block;
-    margin-bottom: 0;
+  @keyframes introon {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  .slider-section .typing-text .line1 {
-    font-size: var(--display-medium) !important;
-    font-weight: 700;
-    color: var(--neutral-light);
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    /* width: 0; */
-    /* animation: typing1 0.8s steps(30, end) 0.2s forwards; */
-  }
-
-  /* @keyframes typing1 {
-    to { width: 363px; }
-  }
-
-  @media (max-width: 991px) {
+  /* @media (max-width: 991px) {
     @keyframes typing1 {
     to { width: 307px; }
   }
