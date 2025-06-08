@@ -1383,6 +1383,16 @@ transition-delay: 0.25s;
       color: var(--neutral-white);
       width: 150px;
     }
+    @media (max-width: 991px) {
+      .card.bg4 .card-dark-button {
+        width: 130px;
+      }
+    }
+    @media (max-width: 599px) {
+      .card.bg4 .card-dark-button {
+        width: 130px;
+      }
+    }
 
     .card.bg4 .card-dark-button:hover {
       background-color: var(--neutral-dark);
