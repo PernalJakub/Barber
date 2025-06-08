@@ -1361,6 +1361,7 @@ transition-delay: 0.25s;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
 .card-map-button {
