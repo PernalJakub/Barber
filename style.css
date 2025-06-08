@@ -243,7 +243,7 @@
   body {
     margin: 0;
     background: var(--tertiary-base);
-    background-image: url('./media/background.png');
+    background-image: url('./media/background.webp');
     background-size: cover;
     background-position: center;
     font-family: var(--font-rest);
