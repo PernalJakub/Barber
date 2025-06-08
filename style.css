@@ -1370,7 +1370,6 @@ transition-delay: 0.25s;
       background-color: var(--neutral-white);
       color: var(--neutral-black);
       font-size: var(--label-large);
-      font-weight: 500;
       text-decoration: none;
       height: 46px;
       width: 150px;
@@ -1393,7 +1392,6 @@ transition-delay: 0.25s;
         width: 130px;
       }
     }
-
     .card.bg4 .card-dark-button:hover {
       background-color: var(--neutral-dark);
       color: var(--neutral-white);
