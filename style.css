@@ -2591,7 +2591,7 @@ animation-play-state: paused;
 }
 
 .card-section-2 .cs-arrow:hover {
-  color: white;
+  color: var(--neutral-base);
 }
 
 .card-section-2 .card-container {
