@@ -1224,11 +1224,11 @@
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    width: 0;
-    animation: typing1 0.8s steps(30, end) 0.2s forwards;
+    /* width: 0; */
+    /* animation: typing1 0.8s steps(30, end) 0.2s forwards; */
   }
 
-  @keyframes typing1 {
+  /* @keyframes typing1 {
     to { width: 363px; }
   }
 
@@ -1242,7 +1242,7 @@
     @keyframes typing1 {
     to { width: 280px; }
   }
-  }
+  } */
 
   .fade-lock,
   .fade-lock * {
@@ -1343,12 +1343,12 @@ transition-delay: 0.25s;
   background-repeat: no-repeat;
 }
 
-  /* .card.bg4 .overlay {
+  .card.bg4 .overlay {
     position: absolute;
     inset: 0;
     background: #0000004e;
     z-index: 1;
-  } */
+  }
 
 /* .card.bg4 .center {
   z-index: 2;
