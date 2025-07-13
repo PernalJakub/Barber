@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadGlobalSVGIcons();
   optimizeVideoLoading();
+  initCookieConsent();
 });
 
 function optimizeVideoLoading() {
@@ -1166,4 +1167,201 @@ document.addEventListener("DOMContentLoaded", () => {
     observer9.observe(contentTitleMapMobile);
   }
 });
+
+// RODO Cookie Consent System
+function initCookieConsent() {
+  console.log('Cookie consent initialized');
+  
+  // Clear any existing consent for testing (remove this line in production)
+  // localStorage.removeItem('cookieConsent');
+  
+  // Show cookie banner after animations complete (5 seconds)
+  setTimeout(() => {
+    console.log('Checking if user made choice:', hasUserMadeChoice());
+    if (!hasUserMadeChoice()) {
+      console.log('Showing cookie banner');
+      showCookieBanner();
+    } else {
+      console.log('User already made choice, loading tracking scripts');
+      loadTrackingScripts();
+    }
+  }, 6000);
+
+  // Event listeners for cookie buttons
+  document.getElementById('cookie-accept-all').addEventListener('click', () => {
+    acceptAllCookies();
+  });
+
+  document.getElementById('cookie-accept-selected').addEventListener('click', () => {
+    acceptSelectedCookies();
+  });
+
+  document.getElementById('cookie-reject').addEventListener('click', () => {
+    rejectOptionalCookies();
+  });
+
+  document.getElementById('cookie-settings').addEventListener('click', (e) => {
+    e.preventDefault();
+    showCookieBanner();
+  });
+
+  // Footer cookie settings link
+  document.getElementById('footer-cookie-settings').addEventListener('click', (e) => {
+    e.preventDefault();
+    showCookieBanner();
+  });
+
+  // Load tracking scripts based on stored preferences
+  loadTrackingScripts();
+  
+  // Make function available globally for testing
+  window.testCookieBanner = () => {
+    console.log('Testing cookie banner...');
+    localStorage.removeItem('cookieConsent');
+    showCookieBanner();
+  };
+}
+
+function hasUserMadeChoice() {
+  return localStorage.getItem('cookieConsent') !== null;
+}
+
+function showCookieBanner() {
+  console.log('showCookieBanner called');
+  const banner = document.getElementById('cookie-banner');
+  console.log('Banner element:', banner);
+  if (banner) {
+    banner.style.display = 'block';
+    console.log('Banner display set to block');
+    setTimeout(() => {
+      banner.classList.add('show');
+      console.log('Added show class to banner');
+    }, 100);
+  } else {
+    console.error('Cookie banner element not found!');
+  }
+}
+
+function hideCookieBanner() {
+  const banner = document.getElementById('cookie-banner');
+  banner.classList.remove('show');
+  setTimeout(() => banner.style.display = 'none', 500);
+}
+
+function acceptAllCookies() {
+  const consent = {
+    necessary: true,
+    analytics: true,
+    marketing: true,
+    timestamp: Date.now()
+  };
+  localStorage.setItem('cookieConsent', JSON.stringify(consent));
+  loadTrackingScripts();
+  hideCookieBanner();
+}
+
+function acceptSelectedCookies() {
+  const analytics = document.getElementById('analytics-cookies').checked;
+  const marketing = document.getElementById('marketing-cookies').checked;
+  
+  const consent = {
+    necessary: true,
+    analytics: analytics,
+    marketing: marketing,
+    timestamp: Date.now()
+  };
+  localStorage.setItem('cookieConsent', JSON.stringify(consent));
+  loadTrackingScripts();
+  hideCookieBanner();
+}
+
+function rejectOptionalCookies() {
+  const consent = {
+    necessary: true,
+    analytics: false,
+    marketing: false,
+    timestamp: Date.now()
+  };
+  localStorage.setItem('cookieConsent', JSON.stringify(consent));
+  removeOptionalCookies();
+  hideCookieBanner();
+}
+
+function loadTrackingScripts() {
+  const consent = getStoredConsent();
+  if (!consent) return;
+
+  // Google Analytics
+  if (consent.analytics) {
+    loadGoogleAnalytics();
+  }
+
+  // Meta Pixel
+  if (consent.marketing) {
+    loadMetaPixel();
+  }
+}
+
+function loadGoogleAnalytics() {
+  // Check if already loaded
+  if (window.gtag) return;
+
+  // Google Analytics 4
+  const script1 = document.createElement('script');
+  script1.async = true;
+  script1.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+  document.head.appendChild(script1);
+
+  const script2 = document.createElement('script');
+  script2.innerHTML = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  `;
+  document.head.appendChild(script2);
+}
+
+function loadMetaPixel() {
+  // Check if already loaded
+  if (window.fbq) return;
+
+  // Meta Pixel
+  const script = document.createElement('script');
+  script.innerHTML = `
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  `;
+  document.head.appendChild(script);
+}
+
+function removeOptionalCookies() {
+  // Remove analytics cookies
+  const analyticsCookies = ['_ga', '_ga_', '_gid', '_gat', '__utma', '__utmb', '__utmc', '__utmt', '__utmz'];
+  analyticsCookies.forEach(name => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname};`;
+  });
+
+  // Remove marketing cookies
+  const marketingCookies = ['_fbp', '_fbc', 'fr'];
+  marketingCookies.forEach(name => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname};`;
+  });
+}
+
+function getStoredConsent() {
+  const stored = localStorage.getItem('cookieConsent');
+  return stored ? JSON.parse(stored) : null;
+}
+
 // JS map-section

@@ -620,7 +620,11 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-note">GreenSite 2024</p>
-        <p class="footer-note"><a href="#">Manage Cookies</a></p>
+        <div class="footer-privacy-links">
+          <a href="polityka-prywatnosci.html" target="_blank" class="footer-link">Polityka prywatności</a>
+          <span class="footer-separator">|</span>
+          <a href="#" id="footer-cookie-settings" class="footer-link">Ustawienia cookie</a>
+        </div>
         <div class="footer-icons">
           <a href="https://www.instagram.com" target="_blank" rel="noopener" class="icon-instagram-footer"></a>
           <a href="https://www.tiktok.com" target="_blank" rel="noopener" class="icon-tiktok-footer"></a>
@@ -766,5 +770,44 @@
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDufygxH6WLxBUr5UP1zMSAUBaeeyYJ_TA&callback=initMap">
   </script>
+
+  <!-- RODO Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <div class="cookie-content">
+      <div class="cookie-header">
+        <h3>🍪 Informacja o plikach cookie</h3>
+      </div>
+      <div class="cookie-body">
+        <p>Ta strona używa plików cookie w celu zapewnienia najlepszej jakości usług. Niektóre pliki cookie są niezbędne do funkcjonowania strony, inne pomagają nam analizować ruch i personalizować treści.</p>
+        <div class="cookie-details">
+          <div class="cookie-category">
+            <strong>Niezbędne:</strong> Podstawowe funkcje strony (zawsze aktywne)
+          </div>
+          <div class="cookie-category">
+            <label>
+              <input type="checkbox" id="analytics-cookies" checked>
+              <strong>Analityczne:</strong> Google Analytics, pomiary ruchu
+            </label>
+          </div>
+          <div class="cookie-category">
+            <label>
+              <input type="checkbox" id="marketing-cookies" checked>
+              <strong>Marketingowe:</strong> Meta Pixel, personalizacja reklam
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="cookie-actions">
+        <button id="cookie-accept-all" class="cookie-btn cookie-accept">Akceptuj wszystkie</button>
+        <button id="cookie-accept-selected" class="cookie-btn cookie-partial">Akceptuj wybrane</button>
+        <button id="cookie-reject" class="cookie-btn cookie-reject">Odrzuć opcjonalne</button>
+      </div>
+      <div class="cookie-footer">
+        <a href="polityka-prywatnosci.html" target="_blank">Polityka prywatności</a> | 
+        <a href="#" id="cookie-settings">Ustawienia cookie</a>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

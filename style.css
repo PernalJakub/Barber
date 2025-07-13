@@ -1438,6 +1438,209 @@ transition-delay: 0.25s;
       color: var(--neutral-white);
     }
 
+/* RODO Cookie Banner */
+.cookie-banner {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(10px);
+  z-index: 99999 !important;
+  padding: var(--space-lg);
+  border-top: 2px solid var(--primary-base);
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  box-sizing: border-box !important;
+}
+
+.cookie-banner.show {
+  transform: translateY(0);
+}
+
+.cookie-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--neutral-white);
+}
+
+.cookie-header h3 {
+  font-family: "SF Pro Display", sans-serif;
+  font-size: var(--headline-medium);
+  color: var(--primary-base);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.cookie-body p {
+  font-size: var(--body-large);
+  line-height: var(--line-height-body-large);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.cookie-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.cookie-category {
+  display: flex;
+  align-items: center;
+  font-size: var(--body-medium);
+}
+
+.cookie-category label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.cookie-category input[type="checkbox"] {
+  margin-right: var(--space-sm);
+  transform: scale(1.2);
+}
+
+.cookie-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-bottom: var(--space-md);
+}
+
+.cookie-btn {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: 24px;
+  border: none;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: var(--label-large);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.cookie-accept {
+  background: var(--primary-base);
+  color: var(--neutral-black);
+}
+
+.cookie-accept:hover {
+  background: #d4c285;
+  transform: translateY(-2px);
+}
+
+.cookie-partial {
+  background: var(--neutral-white);
+  color: var(--neutral-black);
+}
+
+.cookie-partial:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.cookie-reject {
+  background: transparent;
+  color: var(--neutral-white);
+  border: 1px solid var(--neutral-white);
+}
+
+.cookie-reject:hover {
+  background: var(--neutral-white);
+  color: var(--neutral-black);
+  transform: translateY(-2px);
+}
+
+.cookie-footer {
+  text-align: center;
+  font-size: var(--body-small);
+  color: var(--neutral-light);
+}
+
+.cookie-footer a {
+  color: var(--primary-base);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cookie-footer a:hover {
+  color: #d4c285;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .cookie-banner {
+    padding: var(--space-md);
+  }
+  
+  .cookie-header h3 {
+    font-size: var(--headline-medium-m);
+  }
+  
+  .cookie-body p {
+    font-size: var(--body-medium-m);
+  }
+  
+  .cookie-actions {
+    flex-direction: column;
+  }
+  
+  .cookie-btn {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .cookie-details {
+    padding: var(--space-sm);
+  }
+}
+
+/* Footer Privacy Links */
+.footer-privacy-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin: var(--space-sm) 0;
+}
+
+.footer-link {
+  color: var(--primary-base);
+  text-decoration: none;
+  font-size: var(--body-small);
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #d4c285;
+  text-decoration: underline;
+}
+
+.footer-separator {
+  color: var(--neutral-medium);
+  font-size: var(--body-small);
+}
+
+@media (max-width: 768px) {
+  .footer-privacy-links {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .footer-separator {
+    display: none;
+  }
+}
+
 /* CSS slider-section */
 
 /* CSS card-section */
