@@ -1097,6 +1097,14 @@ video, img {
   z-index: -10;
  }
 
+ @media (max-width: 991px) {
+  .slider-section .bg2 .two-col .right img,
+  .slider-section .bg3 .two-col .right img {
+    object-position: center;
+    width: 100%;
+  }
+ }
+
   .slider-section .arrow.left span {
     display: inline-block;
     transform: translateX(-2px);
