@@ -322,12 +322,20 @@ function initSliderSection() {
     let isDragging = false;
 
     track.addEventListener("touchstart", (e) => {
+      // Allow buttons to work normally - don't prevent default for them
+      if (e.target.closest('.card-map-button') || e.target.closest('a')) {
+        return;
+      }
       e.preventDefault();
       startX = e.touches[0].clientX;
       isDragging = true;
     }, { passive: false });
 
     track.addEventListener("touchmove", (e) => {
+      // Allow buttons to work normally
+      if (e.target.closest('.card-map-button') || e.target.closest('a')) {
+        return;
+      }
       e.preventDefault();
       if (!isDragging) return;
       const currentX = e.touches[0].clientX;
@@ -345,7 +353,11 @@ function initSliderSection() {
       }
     }, { passive: false });
 
-    track.addEventListener("touchend", () => {
+    track.addEventListener("touchend", (e) => {
+      // Allow buttons to work normally
+      if (e.target.closest('.card-map-button') || e.target.closest('a')) {
+        return;
+      }
       isDragging = false;
     });
   }

@@ -1235,6 +1235,15 @@
   transition: all 0.6s ease !important;
 }
 
+.fade-lock .card-map-button,
+.fade-lock .card-map-button * {
+  background-color: var(--neutral-black) !important;
+  color: var(--neutral-white) !important;
+  border-color: var(--neutral-black) !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+}
+
 .card.bg2.fade-lock {
   transform: translateX(50px);
   opacity: 0;
@@ -1332,9 +1341,10 @@ transition-delay: 0.25s;
     z-index: 1;
   }
 
-/* .card.bg4 .center {
-  z-index: 2;
-} */
+.card.bg4 .center {
+  position: relative;
+  z-index: 15;
+}
 
 .card.bg4 > div,
 .card.bg4 .buttons,
@@ -1347,6 +1357,8 @@ transition-delay: 0.25s;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 20;
 }
 
 .card-map-button {
@@ -1371,6 +1383,23 @@ transition-delay: 0.25s;
     @media (max-width: 991px) {
       .card.bg4 .card-dark-button {
         width: 130px;
+      }
+      
+      .card-map-button {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        cursor: pointer;
+        position: relative;
+        z-index: 10;
+      }
+      
+      .card-map-button:active {
+        transform: scale(0.95);
+        opacity: 0.8;
       }
     }
     @media (max-width: 599px) {
