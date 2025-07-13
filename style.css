@@ -1,8 +1,25 @@
+/* Performance optimizations */
+.video-background video {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+img {
+  content-visibility: auto;
+}
+
+/* Reduce layout shifts */
+video, img {
+  height: auto;
+  max-width: 100%;
+}
+
 @font-face {
   font-family: "SF Pro Display";
   src: url("./media/fonts/SF-Pro-Rounded-Semibold.otf") format("opentype");
   font-weight: lighter;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -10,6 +27,7 @@
   src: url("./media/fonts/SF-Pro-Rounded-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 :root {

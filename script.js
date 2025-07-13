@@ -1,6 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadGlobalSVGIcons();
+  optimizeVideoLoading();
 });
+
+function optimizeVideoLoading() {
+  const video = document.querySelector('.video-background video');
+  if (video) {
+    // Disable video on slow connections
+    if ('connection' in navigator && navigator.connection.effectiveType === '2g') {
+      video.style.display = 'none';
+      const poster = document.createElement('img');
+      poster.src = './media/slider-section/barber-krosno.png';
+      poster.alt = 'Dziupla Barbershop';
+      poster.style.cssText = 'width: 100%; height: 100%; object-fit: cover;';
+      video.parentNode.appendChild(poster);
+      return;
+    }
+    
+    // Lazy load video on mobile to improve performance
+    if (window.innerWidth <= 768) {
+      video.preload = 'none';
+      video.poster = './media/slider-section/barber-krosno.png';
+      
+      // Load video on first interaction or after 3 seconds
+      const loadVideo = () => {
+        video.preload = 'metadata';
+        video.load();
+        document.removeEventListener('touchstart', loadVideo);
+        document.removeEventListener('scroll', loadVideo);
+      };
+      
+      document.addEventListener('touchstart', loadVideo, { once: true });
+      document.addEventListener('scroll', loadVideo, { once: true });
+      
+      // Fallback: load after 3 seconds anyway
+      setTimeout(loadVideo, 3000);
+    }
+  }
+}
 
 function loadGlobalSVGIcons() {
   fetch('./media/icons/sprite.svg')

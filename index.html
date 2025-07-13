@@ -11,10 +11,13 @@
   <meta property="og:type" content="website">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="style.css">
-  <link rel="preload" as="image" href="./media/background.png">
+  <link rel="preload" as="image" href="./media/background.webp">
+  <link rel="preload" as="image" href="./media/slider-section/barber-krosno.png">
+  <link rel="preload" as="script" href="script.js">
+  <link rel="prefetch" href="./media/icons/sprite.svg">
   <script>
     const bg = new Image();
-    bg.src = './media/background.png';
+    bg.src = './media/background.webp';
   </script>
 </head>
 <body>
@@ -64,7 +67,7 @@
         <!-- KARTA 1 -->
         <div class="card bg1 center-cta bg-image">
           <div class="video-background">
-            <video autoplay loop muted playsinline>
+            <video autoplay loop muted playsinline preload="metadata" loading="lazy">
               <source src="./media/slider-section/barber-krosno.webm" type="video/webm">
               Przeglądarka nie obsługuje formatu WebM.
             </video>
