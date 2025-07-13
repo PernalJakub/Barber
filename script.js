@@ -3,69 +3,57 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function loadGlobalSVGIcons() {
-  const icons = [
-    { class: "icon-logo", path: "./media/icons/logo.svg" },
-    { class: "icon-facebook", path: "./media/icons/facebook.svg" },
-    { class: "icon-instagram", path: "./media/icons/instagram.svg" },
-    { class: "icon-tiktok", path: "./media/icons/tiktok.svg" },
-    { class: "icon-booksy", path: "./media/icons/booksy.svg" },
-
-    // Mobile versions
-    { class: "icon-facebook-mobile", path: "./media/icons/facebook.svg" },
-    { class: "icon-instagram-mobile", path: "./media/icons/instagram.svg" },
-    { class: "icon-tiktok-mobile", path: "./media/icons/tiktok.svg" },
-    { class: "icon-booksy-mobile", path: "./media/icons/booksy.svg" },
-
-    // Footer (white version) icons
-    { class: "icon-facebook-footer", path: "./media/icons/facebook.svg" },
-    { class: "icon-instagram-footer", path: "./media/icons/instagram.svg" },
-    { class: "icon-tiktok-footer", path: "./media/icons/tiktok.svg" },
-    { class: "icon-booksy-footer", path: "./media/icons/booksy.svg" },
-
-    // Card-section (white version) icons
-    { class: "icon-facebook-card", path: "./media/icons/facebook.svg" },
-    { class: "icon-instagram-card", path: "./media/icons/instagram.svg" },
-    { class: "icon-tiktok-card", path: "./media/icons/tiktok.svg" },
-    { class: "icon-booksy-card", path: "./media/icons/booksy.svg" },
-
-    // Button
-    { class: "icon-facebook-button", path: "./media/icons/facebook.svg" },
-    { class: "icon-instagram-button", path: "./media/icons/instagram.svg" },
-    { class: "icon-tiktok-button", path: "./media/icons/tiktok.svg" },
-    { class: "icon-booksy-button", path: "./media/icons/booksy.svg" },
-    { class: "icon-button-narrowup", path: "./media/icons/narrowup.svg" },
-    { class: "icon-button-narrowdown", path: "./media/icons/narrowdown.svg" },
-    { class: "icon-button-google-maps", path: "./media/icons/google-maps.svg" },
-    { class: "icon-button-lesson", path: "./media/icons/lesson.svg" }
-  ];
-
-  icons.forEach(icon => {
-    fetch(icon.path)
-      .then(response => response.text())
-      .then(data => {
-        const containers = document.querySelectorAll(`.${icon.class}`);
+  fetch('./media/icons/sprite.svg')
+    .then(response => response.text())
+    .then(data => {
+      const div = document.createElement('div');
+      div.innerHTML = data;
+      document.body.appendChild(div);
+      
+      // Map icon classes to sprite IDs
+      const iconMap = {
+        'icon-facebook': 'facebook',
+        'icon-instagram': 'instagram', 
+        'icon-tiktok': 'tiktok',
+        'icon-booksy': 'booksy',
+        'icon-facebook-mobile': 'facebook',
+        'icon-instagram-mobile': 'instagram',
+        'icon-tiktok-mobile': 'tiktok',
+        'icon-booksy-mobile': 'booksy',
+        'icon-facebook-footer': 'facebook',
+        'icon-instagram-footer': 'instagram',
+        'icon-tiktok-footer': 'tiktok',
+        'icon-booksy-footer': 'booksy',
+        'icon-facebook-card': 'facebook',
+        'icon-instagram-card': 'instagram',
+        'icon-tiktok-card': 'tiktok',
+        'icon-booksy-card': 'booksy',
+        'icon-facebook-button': 'facebook',
+        'icon-instagram-button': 'instagram',
+        'icon-tiktok-button': 'tiktok',
+        'icon-booksy-button': 'booksy',
+        'icon-button-narrowup': 'narrowup',
+        'icon-button-narrowdown': 'narrowdown',
+        'icon-button-google-maps': 'google-maps',
+        'icon-button-lesson': 'lesson'
+      };
+      
+      Object.entries(iconMap).forEach(([className, iconId]) => {
+        const containers = document.querySelectorAll(`.${className}`);
         containers.forEach(container => {
-          container.innerHTML = data;
+          container.innerHTML = `<svg class="global-icon-svg" fill="currentColor"><use href="#${iconId}"></use></svg>`;
+          
           const svg = container.querySelector('svg');
-          if (svg) {
-            svg.classList.add('global-icon-svg');
-            svg.setAttribute('fill', 'currentColor');
-            if (
-              icon.class.includes("footer") ||
-              icon.class.includes("card")
-            ) {
-              svg.classList.add('footer-icon-white');
-            }
-             if (
-              icon.class.includes("button")
-            ) {
-              svg.classList.remove('global-icon-svg')
-              svg.classList.add('global-icon-svg-button');
-            }
+          if (svg && (className.includes("footer") || className.includes("card"))) {
+            svg.classList.add('footer-icon-white');
+          }
+          if (svg && className.includes("button")) {
+            svg.classList.remove('global-icon-svg');
+            svg.classList.add('global-icon-svg-button');
           }
         });
       });
-  });
+    });
 }
 
 
@@ -89,7 +77,13 @@ function initNavbarSection() {
       }
     });
   }
-  window.addEventListener("scroll", updateActiveLink);
+  let scrollTimeout;
+  const debouncedUpdateActiveLink = () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(updateActiveLink, 16); // ~60fps
+  };
+  
+  window.addEventListener("scroll", debouncedUpdateActiveLink);
   updateActiveLink();
 
   // Scroll to center of section on nav-link click
